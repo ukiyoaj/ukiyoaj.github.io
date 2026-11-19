@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Amine Jebali — Portfolio</title>
+  <meta name="description" content="Portfolio d'Amine Jebali : assistant IA JARVIS, pipeline d'affichage volumétrique, clone d'Instagram, robotique Arduino et serveur maison." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+:root {
+  --bg: #f5f1ea;
+  --paper: #fffdf9;
+  --ink: #1d1b18;
+  --muted: #6b655c;
+  --line: #e2dbcf;
+  --accent: #2b44d6;
+  --accent-2: #e8552d;
+  --radius: 18px;
+  --max: 1080px;
+  --contact-bg: #1d1b18;
+  --contact-text: #fffdf9;
+  --contact-muted: #c9c2b6;
+  --done-bg: #e3f1e6; --done-fg: #2f7a45;
+  --wip-bg: #fbe7dc; --wip-fg: #b8461f;
+  color-scheme: light;
+}
+[data-theme="dark"] {
+  --bg: #141417;
+  --paper: #1d1d22;
+  --ink: #eceae5;
+  --muted: #a29e96;
+  --line: #2d2d34;
+  --accent: #7b8cff;
+  --accent-2: #ff8357;
+  --contact-bg: #23232a;
+  --contact-text: #eceae5;
+  --contact-muted: #a29e96;
+  --done-bg: #1e3326; --done-fg: #7fd39a;
+  --wip-bg: #3a2419; --wip-fg: #ffa47f;
+  color-scheme: dark;
+}
+body { transition: background .3s, color .3s; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif; background: var(--bg); color: var(--ink); line-height: 1.65; }
+a { color: inherit; text-decoration: none; }
+h1, h2, .feat h3 { font-weight: 800; letter-spacing: -.03em; }
+
+/* NAV */
+.nav { display: flex; justify-content: space-between; align-items: center; max-width: var(--max); margin: 0 auto; padding: 1.6rem clamp(1.2rem, 5vw, 2.5rem); }
+.nav-logo { font-size: 1.2rem; font-weight: 800; letter-spacing: -.02em; }
+.nav nav { display: flex; gap: clamp(1rem, 3vw, 2rem); font-size: .95rem; }
+.nav nav a { color: var(--muted); }
+.nav nav a:hover { color: var(--ink); text-decoration: underline; text-underline-offset: 4px; }
+
+main { max-width: var(--max); margin: 0 auto; padding: 0 clamp(1.2rem, 5vw, 2.5rem); }
+section { padding: 4.5rem 0 1rem; }
+
+/* HERO */
+.hero { padding: 4rem 0 3rem; display: grid; grid-template-columns: 1.4fr 1fr; gap: 3rem; align-items: center; }
+.hero h1 { font-size: clamp(2.8rem, 7vw, 5rem); line-height: 1; }
+.hero h1 .hl { color: var(--accent); }
+.hero-sub { max-width: 560px; color: var(--muted); font-size: 1.15rem; margin: 1.4rem 0 2rem; }
+.hero-cta { display: flex; gap: .8rem; flex-wrap: wrap; }
+.hero-card {
+  background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 1.6rem; transform: rotate(1.5deg); box-shadow: 0 12px 30px -18px rgba(29,27,24,.35);
+}
+.hero-card p { font-size: .95rem; color: var(--muted); }
+.hero-card strong { color: var(--ink); }
+.hero-card ul { list-style: none; display: grid; gap: .6rem; margin-top: 1rem; }
+.hero-card li { display: flex; gap: .7rem; align-items: baseline; }
+.hero-card li span:first-child { color: var(--accent-2); font-weight: 600; min-width: 1.6rem; }
+
+.btn {
+  display: inline-block; padding: .75rem 1.3rem; border-radius: 12px; font: inherit; font-weight: 600;
+  border: 1.5px solid var(--ink); background: transparent; color: var(--ink); cursor: pointer; transition: transform .15s, background .15s;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn-primary { background: var(--ink); color: var(--paper); }
+.btn-primary:hover { background: var(--accent); border-color: var(--accent); }
+
+.section-title { font-size: clamp(1.9rem, 4.5vw, 2.6rem); margin-bottom: .4rem; }
+.section-intro { color: var(--muted); margin-bottom: 2rem; }
+
+/* FEATURED */
+.featured { display: grid; gap: 1.6rem; }
+.feat {
+  display: grid; grid-template-columns: 1.15fr 1fr; gap: 2rem; align-items: center;
+  background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 2rem; cursor: pointer; transition: box-shadow .2s, transform .2s;
+}
+.feat:hover { transform: translateY(-3px); box-shadow: 0 16px 40px -24px rgba(29,27,24,.4); }
+.feat:nth-child(even) .feat-visual { order: -1; }
+.feat-kicker { color: var(--accent-2); font-size: .8rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+.feat h3 { font-size: 2rem; margin: .2rem 0 .7rem; }
+.feat p { color: var(--muted); }
+.feat ul { list-style: none; margin: 1.1rem 0; display: grid; gap: .45rem; }
+.feat li { padding-left: 1.2rem; position: relative; }
+.feat li::before { content: ""; position: absolute; left: 0; top: .65em; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+.feat-visual { border-radius: 14px; background: var(--bg); min-height: 280px; position: relative; overflow: hidden; }
+.feat-visual canvas { width: 100%; height: 100%; position: absolute; inset: 0; }
+.more { color: var(--accent); font-weight: 600; font-size: .95rem; }
+
+.tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: 1rem; }
+.tags span { font-size: .78rem; font-weight: 600; padding: .25rem .65rem; border-radius: 8px; background: var(--bg); color: var(--ink); border: 1px solid var(--line); }
+
+/* FILTERS + GRID */
+.filters { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 1.5rem; }
+.chip { font: inherit; font-size: .9rem; font-weight: 600; padding: .4rem 1rem; border-radius: 10px; border: 1.5px solid var(--line); background: transparent; color: var(--muted); cursor: pointer; }
+.chip.active, .chip:hover { color: var(--paper); background: var(--ink); border-color: var(--ink); }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.2rem; }
+.card { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.5rem; display: flex; flex-direction: column; cursor: pointer; transition: transform .2s, box-shadow .2s; }
+.card:hover { transform: translateY(-3px); box-shadow: 0 16px 40px -24px rgba(29,27,24,.4); }
+.card-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: .9rem; }
+.card-icon { font-size: 1.5rem; }
+.status { font-size: .72rem; font-weight: 700; padding: .2rem .55rem; border-radius: 6px; }
+.status.done { background: var(--done-bg); color: var(--done-fg); }
+.status.wip { background: var(--wip-bg); color: var(--wip-fg); }
+.card h3 { font-size: 1.3rem; font-weight: 600; margin-bottom: .3rem; }
+.card p { color: var(--muted); font-size: .95rem; flex: 1; }
+.card.hide { display: none; }
+
+
+/* ABOUT */
+.about { display: grid; grid-template-columns: 1fr 1.5fr; gap: 3rem; align-items: start; }
+.about-intro p { color: var(--muted); font-size: 1.05rem; margin-bottom: 1rem; }
+.about-intro p strong { color: var(--ink); }
+.about-badges { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.4rem; }
+.about-badges span { font-weight: 700; font-size: .85rem; padding: .4rem .8rem; border-radius: 10px; background: var(--paper); border: 1px solid var(--line); }
+.about-list { list-style: none; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: .4rem 1.5rem; }
+.about-list li { display: grid; grid-template-columns: 120px 1fr; gap: .2rem 1.2rem; padding: 1.05rem 0; border-bottom: 1px solid var(--line); }
+.about-list li:last-child { border-bottom: none; }
+.about-list .yr { font-weight: 700; color: var(--muted); font-size: .9rem; grid-row: span 2; padding-top: .1rem; }
+.about-list .cat { font-size: .72rem; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; }
+.about-list .cat.sport { color: var(--accent-2); }
+.about-list .cat.crea { color: var(--accent); }
+.about-list .cat.engage { color: var(--done-fg); }
+.about-list p { font-weight: 500; }
+@media (max-width: 820px) {
+  .about { grid-template-columns: 1fr; gap: 1.5rem; }
+  .about-list li { grid-template-columns: 1fr; }
+  .about-list .yr { grid-row: auto; }
+}
+
+/* SKILLS */
+.skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; }
+.skill-group { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.4rem; }
+.skill-group h3 { font-size: .85rem; text-transform: uppercase; letter-spacing: .06em; color: var(--accent-2); margin-bottom: .8rem; }
+.skill-group .tags { margin-top: 0; }
+
+/* TIMELINE */
+.timeline { list-style: none; display: grid; gap: 1.2rem; }
+.timeline li { display: grid; grid-template-columns: 110px 1fr; gap: .2rem 1.5rem; padding: 1.2rem 0; border-top: 1px solid var(--line); }
+.when { color: var(--muted); font-weight: 600; grid-row: span 2; }
+.timeline li > h3, .timeline li > p { grid-column: 2; }
+.timeline h3 { font-size: 1.15rem; }
+.timeline p { color: var(--muted); }
+
+/* CONTACT */
+.contact { margin: 4rem 0 3rem; padding: 3rem clamp(1.5rem, 5vw, 3rem); background: var(--contact-bg); color: var(--contact-text); border-radius: 24px; border: 1px solid var(--line); }
+.contact .section-title { color: var(--contact-text); }
+.contact p { color: var(--contact-muted); font-size: 1.1rem; margin-bottom: 1.6rem; }
+.contact-links { display: flex; gap: .8rem; flex-wrap: wrap; }
+.contact .btn { border-color: var(--contact-text); color: var(--contact-text); }
+.contact .btn:hover { background: var(--contact-text); color: var(--contact-bg); }
+
+footer { text-align: center; padding: 2rem; color: var(--muted); font-size: .85rem; }
+
+.theme-toggle {
+  font: inherit; font-size: 1.05rem; width: 40px; height: 40px; border-radius: 12px; cursor: pointer;
+  border: 1.5px solid var(--line); background: var(--paper); color: var(--ink); display: grid; place-items: center;
+}
+.theme-toggle:hover { border-color: var(--ink); }
+.nav-right { display: flex; align-items: center; gap: clamp(1rem, 3vw, 2rem); }
+
+/* MODAL */
+dialog { margin: auto; max-width: 700px; width: calc(100% - 2rem); max-height: 85vh; background: var(--paper); color: var(--ink); border: none; border-radius: var(--radius); padding: 2.2rem; box-shadow: 0 30px 80px -30px rgba(0,0,0,.5); }
+dialog::backdrop { background: rgba(29,27,24,.45); }
+.modal-close { position: absolute; top: .8rem; right: 1.1rem; background: none; border: none; color: var(--muted); font-size: 1.8rem; cursor: pointer; }
+.modal-close:hover { color: var(--ink); }
+#modal-content h3 { font-size: 2rem; margin: .3rem 0 .5rem; }
+#modal-content h4 { color: var(--accent-2); margin: 1.4rem 0 .5rem; font-size: .8rem; text-transform: uppercase; letter-spacing: .06em; }
+#modal-content p, #modal-content li { color: var(--muted); }
+#modal-content ul { padding-left: 1.2rem; display: grid; gap: .3rem; }
+#modal-content .links { margin-top: 1.5rem; display: flex; gap: .8rem; flex-wrap: wrap; }
+
+.reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s, transform .6s; }
+.reveal.visible { opacity: 1; transform: none; }
+
+@media (max-width: 820px) {
+  .hero { grid-template-columns: 1fr; padding-top: 2rem; }
+  .hero-card { transform: none; }
+  .feat { grid-template-columns: 1fr; padding: 1.4rem; }
+  .feat:nth-child(even) .feat-visual { order: 0; }
+  .feat-visual { min-height: 230px; }
+  .nav nav a { display: none; }
+  .timeline li { grid-template-columns: 1fr; gap: .2rem; }
+  .timeline li > h3, .timeline li > p { grid-column: 1; }
+  .when { grid-row: auto; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } .reveal { opacity: 1; transform: none; } }
+
+</style>
+  <script>
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem("theme"); } catch (e) {}
+      if (!t) t = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      document.documentElement.setAttribute("data-theme", t);
+    })();
+  </script>
+</head>
+<body>
+
+  <header class="nav">
+    <a href="#top" class="nav-logo" data-field="name">Amine Jebali</a>
+    <div class="nav-right">
+    <nav>
+      <a href="#projets">Projets</a>
+      <a href="#apropos">À propos</a>
+      <a href="#competences">Compétences</a>
+      <a href="#parcours">Parcours</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Changer de thème" title="Mode jour / nuit">🌙</button>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <div>
+        <h1>Bonjour, je suis <span class="hl">Amine</span>.</h1>
+        <p class="hero-sub">
+          Étudiant en informatique à Bordeaux. J'aime les projets où le code sort de l'écran :
+          un assistant vocal, des capteurs pour mes plantes, une voiture autonome, un serveur à la maison…
+          Voici ce que j'ai construit.
+        </p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#projets">Voir mes projets</a>
+          <a class="btn" href="#contact">Me contacter</a>
+        </div>
+      </div>
+      <aside class="hero-card">
+        <p><strong>En ce moment</strong></p>
+        <ul>
+          <li><span>01</span><p>Je finalise mon capteur connecté pour plantes (ESP32-C3).</p></li>
+          <li><span>02</span><p>Je monte mon serveur maison sous Ubuntu Server.</p></li>
+          <li><span>03</span><p>Je fais évoluer mon appli COMBO.</p></li>
+        </ul>
+      </aside>
+    </section>
+
+    <!-- FEATURED -->
+    <section id="projets">
+      <h2 class="section-title">Projets phares</h2>
+      <p class="section-intro">Clique sur un projet pour voir le détail.</p>
+      <div class="featured" id="featured"></div>
+    </section>
+
+    <!-- OTHER PROJECTS -->
+    <section>
+      <h2 class="section-title">Autres projets</h2>
+      <p class="section-intro">Des projets plus petits, ou encore en cours.</p>
+      <div class="filters" id="filters" role="tablist">
+        <button class="chip active" data-filter="all">Tous</button>
+        <button class="chip" data-filter="perso">Perso</button>
+        <button class="chip" data-filter="web">Web</button>
+        <button class="chip" data-filter="hardware">Hardware</button>
+      </div>
+      <div class="grid" id="projects-grid"></div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="apropos">
+      <h2 class="section-title">À propos de moi</h2>
+      <p class="section-intro">En dehors du code.</p>
+      <div class="about">
+        <div class="about-intro reveal">
+          <p>Le code, ce n'est qu'une partie de moi. Je fais du <strong>sport</strong> depuis tout petit, du judo au foot. Aujourd'hui je joue en R2, et je fais aussi de la musculation.</p>
+          <p>J'aime <strong>créer</strong> : une marque de vêtements, un manga, des applis. Et je m'<strong>engage</strong> volontiers pour les autres, au CVL hier et comme délégué aujourd'hui.</p>
+          <div class="about-badges"><span>🥋 Judo</span><span>⚽ Foot R2</span><span>🏋️ Muscu</span><span>👕 Jeryo</span><span>✏️ Manga</span><span>🌍 MUN</span></div>
+        </div>
+        <ol class="about-list reveal">
+          <li><span class="yr">Aujourd'hui</span><span class="cat engage">Engagement</span><p>Délégué et représentant des étudiants de 1<sup>re</sup> année au conseil de département</p></li>
+          <li><span class="yr">2025</span><span class="cat crea">Création</span><p>Création de ma marque de vêtements, <strong>Jeryo</strong></p></li>
+          <li><span class="yr">2024</span><span class="cat crea">Création</span><p>Création d'un manga : le premier chapitre est en cours d'illustration</p></li>
+          <li><span class="yr">2023 → auj.</span><span class="cat sport">Sport</span><p>Musculation depuis 3 ans</p></li>
+          <li><span class="yr">2022 – 2023</span><span class="cat engage">Engagement</span><p>Élu au conseil de la vie lycéenne (CVL) en seconde</p></li>
+          <li><span class="yr">2021 – 2022</span><span class="cat engage">Engagement</span><p>MUN (Model United Nations) à Dubaï, en 3<sup>e</sup></p></li>
+          <li><span class="yr">2021 – 2022</span><span class="cat engage">Transmission</span><p>Animation d'ateliers d'initiation à Scratch pour des collégiens</p></li>
+          <li><span class="yr">2016 → auj.</span><span class="cat sport">Sport</span><p>Football en R2 (Régional 2)</p></li>
+          <li><span class="yr">2014</span><span class="cat sport">Sport</span><p>Vainqueur d'un tournoi national de judo au Gabon</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="competences">
+      <h2 class="section-title">Compétences</h2>
+      <div class="skills" id="skills"></div>
+    </section>
+
+    <!-- TIMELINE -->
+    <section id="parcours">
+      <h2 class="section-title">Parcours</h2>
+      <ol class="timeline">
+        <li>
+          <span class="when">2026 →</span>
+          <h3>BUT Informatique · Bordeaux</h3>
+          <p>Études en développement logiciel, systèmes et réseaux.</p>
+        </li>
+        <li>
+          <span class="when">2026</span>
+          <h3>Projets personnels</h3>
+          <p>Assistant IA JARVIS, appli COMBO, pipeline d'affichage volumétrique, clone d'Instagram, capteur connecté pour plantes, voiture autonome, serveur maison.</p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact">
+      <h2 class="section-title">Contact</h2>
+      <p>Un stage, un projet ou juste une question ? Écris-moi sur LinkedIn.</p>
+      <div class="contact-links">
+        <a class="btn btn-primary" data-field="email-link" href="mailto:ton.email@exemple.com">✉ Email</a>
+        <a class="btn" data-field="github-link" href="https://github.com/ukiyoaj" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" data-field="linkedin-link" href="https://www.linkedin.com/in/ton-profil" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© <span id="year"></span> <span data-field="name">Amine Jebali</span></p>
+  </footer>
+
+  <!-- Project modal -->
+  <dialog id="modal">
+    <button class="modal-close" aria-label="Fermer">×</button>
+    <div id="modal-content"></div>
+  </dialog>
+
+  <script>
+/* =========================================================
+   CONFIG — modifie seulement cette partie pour personnaliser
+   ========================================================= */
+const CONFIG = {
+  name: "Amine Jebali",
+  initials: "AJ",
+  email: "",                       // laisse vide pour ne pas afficher d'email
+  github: "https://github.com/ukiyoaj",
+  linkedin: "https://www.linkedin.com/in/amine-jebali-888993399",
+};
+
+/* =========================================================
+   PROJETS — ajoute / retire / modifie des objets ici
+   featured: true  -> grande carte en haut
+   cats: perso | web | hardware
+   status: "done" (terminé) | "wip" (en cours)
+   repo: lien GitHub du projet (laisse "" si pas encore publié)
+   ========================================================= */
+const PROJECTS = [
+  {
+    id: "jarvis",
+    featured: true,
+    visual: "voice",
+    icon: "🎙️",
+    title: "J.A.R.V.I.S",
+    kicker: "Assistant IA vocal · Windows",
+    short: "Assistant personnel à commande vocale avec interface holographique, cascade de modèles d'IA et contrôle complet de Windows.",
+    highlights: [
+      "Cascade d'IA : LLaMA 3 en local (Ollama) → Groq → Mistral → Gemini, pour réduire les coûts",
+      "Voix réaliste ElevenLabs avec repli hors-ligne (pyttsx3)",
+      "Contrôle par gestes de la main (MediaPipe) : poing, main ouverte, pouce haut/bas",
+      "Moteur d'auto-modification : génère du code, montre un aperçu, fait un backup puis redémarre",
+    ],
+    details: {
+      context: "Projet personnel : créer un vrai assistant de bureau, activable à la voix (« Jarvis » ou Ctrl+Shift+J), avec une interface web futuriste servie en local.",
+      features: [
+        "Interface web holographique (localhost) avec panneaux : chat, finance, gaming, emails, gestes",
+        "Carte holographique Leaflet.js avec 6 modes visuels",
+        "Rédaction d'emails Gmail lue à voix haute avant envoi",
+        "Bons plans jeux (CheapShark, Epic Games), cours crypto (CoinGecko) et bourse (Yahoo Finance)",
+        "Modes de concentration (gaming, code, étude…), lancement / fermeture / désinstallation propre d'applis",
+      ],
+      challenges: [
+        "Serveur HTTP bloqué par l'écoute du mot-clé → écoute déplacée dans un thread daemon + ThreadingTCPServer",
+        "Installeur .bat qui plantait à cause des caractères Unicode dans CMD → réécrit en ASCII pur",
+        "API qui évoluent : migration vers google-genai et nouveau nom de modèle Groq",
+      ],
+    },
+    tags: ["Python", "JavaScript", "HTML/CSS", "Ollama", "MediaPipe", "API REST"],
+    cats: ["perso", "web"],
+    status: "done",
+    repo: "",
+  },
+  {
+    id: "combo",
+    featured: true,
+    visual: "outfit",
+    kicker: "Mon appli · Mode & IA",
+    highlights: [
+      "Dressing virtuel : on photographie ses vêtements et on les range par catégorie",
+      "Création de tenues avec une IA de style, calendrier des tenues portées",
+      "Feed social et marketplace pour revendre ses vêtements",
+      "Sécurité soignée : limites de requêtes, modération des photos, quotas d'IA",
+    ],
+    icon: "👕",
+    title: "COMBO",
+    short: "Mon application de mode : dressing virtuel, création de tenues assistée par IA, feed social et marketplace de vêtements.",
+    details: {
+      context: "Application web full-stack : dressing virtuel, tenues personnalisées, feed d'activité et revente de vêtements.",
+      features: [
+        "Backend Node.js + Prisma, 73 tests automatisés",
+        "Sécurité : rate limiting, CORS restreint, validation des fichiers, échappement XSS, quotas d'IA",
+        "Modération automatique des photos, réinitialisation de mot de passe",
+        "Favoris, calendrier des tenues portées, statistiques du dressing",
+      ],
+    },
+    tags: ["Node.js", "Prisma", "JavaScript", "Sécurité web"],
+    cats: ["perso", "web"],
+    status: "wip",
+    repo: "",
+  },
+  {
+    id: "volumetric",
+    featured: true,
+    visual: "torus",
+    icon: "🧊",
+    title: "Volumetric Pipeline",
+    kicker: "Logiciel de modélisation 3D → hologramme",
+    short: "Chaîne logicielle complète qui transforme un modèle 3D en tranches lumineuses pour un écran volumétrique à LED rotatives (effet hologramme).",
+    highlights: [
+      "Voxelizer Python : STL/OBJ → tranches angulaires (géométrie codée à la main avec numpy)",
+      "Addon Blender pour exporter une scène directement au format .vxd",
+      "Firmware ESP32 : synchro rotation par capteur à effet Hall + LED APA102",
+      "Visualiseur 3D pour vérifier le rendu sans le matériel",
+    ],
+    details: {
+      context: "Projet personnel de recherche : un affichage 3D « flottant » par persistance rétinienne — une barre de LED tourne très vite et dessine l'objet en volume.",
+      features: [
+        "Format binaire .vxd documenté (tranches × lignes × colonnes)",
+        "Paramètres réglables : nombre de tranches par tour, résolution, rayon, hauteur, épaisseur de surface",
+        "Serveur web embarqué sur l'ESP32 pour envoyer un nouveau modèle sans fil",
+        "Validé sur un cube et un tore (1024 triangles traités en ~1,5 s)",
+      ],
+      challenges: [
+        "Bug de normalisation de la hauteur qui coupait la géométrie → trouvé grâce au visualiseur et corrigé",
+        "Firmware trop gros pour la flash → changement du schéma de partition (Minimal SPIFFS)",
+        "Choix des LED : APA102 plutôt que WS2812B, trop lentes pour le taux de rafraîchissement nécessaire",
+      ],
+    },
+    tags: ["Python", "numpy", "C++ / Arduino", "ESP32", "Blender API", "3D"],
+    cats: ["perso", "hardware"],
+    status: "wip",
+    repo: "",
+  },
+  {
+    id: "insta",
+    featured: true,
+    visual: "feed",
+    icon: "📸",
+    title: "Clone d'Instagram",
+    kicker: "Réseau social · Web",
+    short: "Un réseau social complet sur le modèle d'Instagram : publication de photos, fil d'actualité, likes, commentaires et abonnements.",
+    highlights: [
+      "Comptes utilisateurs avec inscription, connexion et page de profil",
+      "Publication de photos avec légende, affichées dans un fil d'actualité",
+      "Likes, commentaires et système d'abonnés / abonnements",
+      "Interface responsive qui reprend les codes d'Instagram",
+    ],
+    details: {
+      context: "Projet personnel : recréer le fonctionnement d'Instagram de A à Z pour comprendre comment marche un vrai réseau social.",
+      features: [
+        "Fil d'actualité avec les publications des comptes suivis",
+        "Grille de photos sur chaque profil, compteurs d'abonnés et d'abonnements",
+        "Likes et commentaires sous chaque publication",
+        "Envoi et stockage des images",
+      ],
+    },
+    tags: ["HTML/CSS", "JavaScript", "Base de données", "Authentification"],
+    cats: ["perso", "web"],
+    status: "done",
+    repo: "",
+  },
+  {
+    id: "plantes",
+    featured: true,
+    visual: "plant",
+    icon: "🌱",
+    title: "Robot gardien de plantes",
+    kicker: "Objet connecté · ESP32-C3",
+    short: "Un robot qui surveille une plante en continu, affiche ses stats sur un petit écran et envoie une alerte sur le téléphone en cas d'urgence.",
+    highlights: [
+      "Cerveau : carte ESP32-C3, avec Wi-Fi intégré pour les alertes",
+      "Capteur capacitif d'humidité du sol (v1.2) : pas d'électrode qui rouille dans la terre",
+      "Capteur de luminosité BH1750 (mesure en lux) et module pH analogique avec sonde BNC",
+      "Écran OLED pour les stats en direct, boîtier personnalisé imprimé en 3D",
+    ],
+    details: {
+      context: "Projet personnel d'objet connecté : surveiller une plante en continu et être prévenu sur son téléphone dès qu'elle a besoin d'aide.",
+      features: [
+        "Lecture régulière des trois capteurs : humidité du sol, pH, luminosité en lux",
+        "Affichage des valeurs en temps réel sur l'écran OLED",
+        "Seuils d'alerte : terre trop sèche, pH anormal, manque de lumière",
+        "Envoi d'une notification sur le téléphone via le Wi-Fi de l'ESP32-C3 en cas d'urgence",
+        "Boîtier conçu sur mesure et imprimé en 3D pour protéger l'électronique",
+      ],
+    },
+    tags: ["ESP32-C3", "C++", "OLED", "BH1750", "Capteurs", "Impression 3D"],
+    cats: ["perso", "hardware"],
+    status: "wip",
+    repo: "",
+  },
+  {
+    id: "robot",
+    featured: true,
+    visual: "radar",
+    kicker: "Robotique · Voiture autonome",
+    highlights: [
+      "Voiture 2 roues motrices pilotée par une Arduino Uno, qui roule toute seule",
+      "Capteur à ultrasons HC-SR04 sur un servomoteur SG90 qui regarde à gauche et à droite",
+      "Pont en H L298N pour gérer la vitesse et le sens des moteurs",
+      "Montage, soudure, câblage, code et réglages faits moi-même",
+    ],
+    icon: "🚗",
+    title: "Voiture autonome",
+    short: "Petite voiture qui roule toute seule : elle détecte les obstacles par ultrasons et choisit le chemin le plus dégagé.",
+    details: {
+      context: "Projet personnel à partir d'un kit, du soudage des moteurs jusqu'au code final.",
+      features: [
+        "Arduino Uno, pont en H L298N, capteur HC-SR04 sur servomoteur SG90",
+        "Balayage gauche / droite pour choisir le chemin le plus dégagé",
+        "Câblage, soudure et calibration faits à la main",
+      ],
+      challenges: [
+        "Alimentation séparée des moteurs et de l'Arduino pour éviter les redémarrages",
+        "Réglage des distances de détection et des temps de virage",
+      ],
+    },
+    tags: ["Arduino", "C++", "Électronique"],
+    cats: ["perso", "hardware"],
+    status: "wip",
+    repo: "",
+  },
+  {
+    id: "homelab",
+    featured: true,
+    visual: "network",
+    kicker: "Serveur · Auto-hébergement",
+    highlights: [
+      "PC portable recyclé en serveur sous Ubuntu Server, services en conteneurs Docker",
+      "Photos, cloud, streaming vidéo et musique hébergés à la maison",
+      "Accès à distance sécurisé par VPN et blocage des pubs sur tout le réseau",
+      "Domotique (volets électriques) et IA locale avec Ollama",
+    ],
+    icon: "🖥️",
+    title: "Serveur maison",
+    short: "Transformation d'un PC portable en serveur auto-hébergé : photos, cloud, streaming, VPN, domotique et IA locale.",
+    details: {
+      context: "Projet personnel d'auto-hébergement sur un Acer Nitro 5.",
+      features: [
+        "Stack Docker sous Ubuntu Server prévue : Immich, Jellyfin, Home Assistant, AdGuard…",
+        "Accès à distance sécurisé via VPN (Tailscale)",
+        "Sauvegardes versionnées selon la règle 3-2-1",
+        "LLM locaux avec Ollama",
+      ],
+    },
+    tags: ["Linux", "Docker", "Réseau", "Self-hosting"],
+    cats: ["perso", "hardware"],
+    status: "wip",
+    repo: "",
+  },
+  {
+    id: "curio",
+    icon: "🗃️",
+    title: "Curio",
+    short: "Roulette de sujets insolites façon fichier de bibliothèque : on tire un sujet, on a 60 secondes pour le présenter.",
+    details: {
+      context: "Mini-projet web en un seul fichier.",
+      features: [
+        "Animation de rouleau type machine à sous",
+        "45 sujets, mélange Fisher-Yates",
+        "Chronomètre circulaire de 60 s, accessibilité « reduced motion »",
+      ],
+    },
+    tags: ["HTML", "CSS", "JavaScript"],
+    cats: ["perso", "web"],
+    status: "done",
+    repo: "",
+  },
+];
+
+const SKILLS = {
+  "Langages": ["Python", "JavaScript", "C++ (Arduino)", "Java", "Bash", "HTML/CSS"],
+  "Outils": ["Git", "GitHub", "VS Code", "Docker", "Blender", "Arduino IDE", "Ollama"],
+  "Systèmes": ["Linux", "Windows", "Ubuntu Server", "Réseau / VPN"],
+  "Domaines": ["IA / LLM", "Robotique", "Électronique", "3D", "Web full-stack", "Auto-hébergement"],
+};
+
+
+/* =========================================================
+   THÈME JOUR / NUIT
+   ========================================================= */
+const THEMES = {
+  light: { acc: "43,68,214", acc2: "232,85,45", ink: "29,27,24", paper: "255,253,249" },
+  dark:  { acc: "123,140,255", acc2: "255,131,87", ink: "236,234,229", paper: "29,29,34" },
+};
+let T = THEMES[document.documentElement.getAttribute("data-theme")] || THEMES.light;
+function setTheme(name) {
+  document.documentElement.setAttribute("data-theme", name);
+  T = THEMES[name];
+  try { localStorage.setItem("theme", name); } catch (e) {}
+  const btn = document.getElementById("theme-toggle");
+  btn.textContent = name === "dark" ? "☀️" : "🌙";
+  btn.setAttribute("aria-label", name === "dark" ? "Passer en mode jour" : "Passer en mode nuit");
+}
+function setupTheme() {
+  setTheme(document.documentElement.getAttribute("data-theme") || "light");
+  document.getElementById("theme-toggle").addEventListener("click", () => {
+    setTheme(document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark");
+  });
+}
+
+/* =========================================================
+   RENDU
+   ========================================================= */
+const $ = (s, el = document) => el.querySelector(s);
+const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const tagsHTML = (tags) => `<div class="tags">${tags.map((t) => `<span>${esc(t)}</span>`).join("")}</div>`;
+const statusHTML = (s) => `<span class="status ${s}">${s === "done" ? "terminé" : "en cours"}</span>`;
+
+function applyConfig() {
+  document.querySelectorAll('[data-field="name"]').forEach((el) => (el.textContent = CONFIG.name));
+  document.querySelectorAll('[data-field="initials"]').forEach((el) => (el.textContent = CONFIG.initials));
+  const mail = $('[data-field="email-link"]');
+  if (CONFIG.email) mail.href = `mailto:${CONFIG.email}`; else mail.remove();
+  $('[data-field="github-link"]').href = CONFIG.github;
+  const li = $('[data-field="linkedin-link"]');
+  if (CONFIG.linkedin) li.href = CONFIG.linkedin; else li.remove();
+  document.title = `${CONFIG.name} — Portfolio`;
+  $("#year").textContent = new Date().getFullYear();
+}
+
+function renderFeatured() {
+  $("#featured").innerHTML = PROJECTS.filter((p) => p.featured)
+    .map((p) => `
+      <article class="feat reveal" data-id="${p.id}" tabindex="0">
+        <div>
+          <span class="feat-kicker">${esc(p.kicker)}</span>
+          <h3>${esc(p.title)}</h3>
+          <p>${esc(p.short)}</p>
+          <ul>${p.highlights.map((h) => `<li>${esc(h)}</li>`).join("")}</ul>
+          ${tagsHTML(p.tags)}
+          <p class="more" style="margin-top:1rem">Voir le détail →</p>
+        </div>
+        <div class="feat-visual"><canvas data-visual="${p.visual}"></canvas></div>
+      </article>`)
+    .join("");
+}
+
+function renderGrid() {
+  $("#projects-grid").innerHTML = PROJECTS.filter((p) => !p.featured)
+    .map((p) => `
+      <article class="card reveal" data-id="${p.id}" data-cats="${p.cats.join(" ")}" tabindex="0">
+        <div class="card-head"><span class="card-icon">${p.icon}</span>${statusHTML(p.status)}</div>
+        <h3>${esc(p.title)}</h3>
+        <p>${esc(p.short)}</p>
+        ${tagsHTML(p.tags)}
+      </article>`)
+    .join("");
+}
+
+function renderSkills() {
+  $("#skills").innerHTML = Object.entries(SKILLS)
+    .map(([group, list]) => `<div class="skill-group reveal"><h3>${esc(group)}</h3>${tagsHTML(list)}</div>`)
+    .join("");
+}
+
+function setupFilters() {
+  $("#filters").addEventListener("click", (e) => {
+    const btn = e.target.closest(".chip");
+    if (!btn) return;
+    document.querySelectorAll(".chip").forEach((c) => c.classList.toggle("active", c === btn));
+    const f = btn.dataset.filter;
+    document.querySelectorAll("#projects-grid .card").forEach((card) => {
+      card.classList.toggle("hide", f !== "all" && !card.dataset.cats.split(" ").includes(f));
+    });
+  });
+}
+
+function openModal(id) {
+  const p = PROJECTS.find((x) => x.id === id);
+  if (!p) return;
+  const d = p.details || {};
+  const list = (arr) => (arr && arr.length ? `<ul>${arr.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>` : "");
+  $("#modal-content").innerHTML = `
+    <span class="feat-kicker">${p.icon} ${statusHTML(p.status)}</span>
+    <h3>${esc(p.title)}</h3>
+    <p>${esc(d.context || p.short)}</p>
+    ${d.features ? `<h4>Fonctionnalités</h4>${list(d.features)}` : ""}
+    ${d.challenges ? `<h4>Problèmes résolus</h4>${list(d.challenges)}` : ""}
+    <h4>Technos</h4>${tagsHTML(p.tags)}
+    <div class="links">${p.repo ? `<a class="btn btn-primary" href="${esc(p.repo)}" target="_blank" rel="noopener">Code sur GitHub</a>` : `<span style="color:var(--muted);font-size:.9rem">Code bientôt public.</span>`}</div>`;
+  $("#modal").showModal();
+}
+
+function setupModal() {
+  document.addEventListener("click", (e) => {
+    const item = e.target.closest("[data-id]");
+    if (item) openModal(item.dataset.id);
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" && document.activeElement?.dataset?.id) openModal(document.activeElement.dataset.id);
+  });
+  const modal = $("#modal");
+  $(".modal-close").addEventListener("click", () => modal.close());
+  modal.addEventListener("click", (e) => { if (e.target === modal) modal.close(); });
+}
+
+function setupReveal() {
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((en) => { if (en.isIntersecting) { en.target.classList.add("visible"); io.unobserve(en.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+}
+
+function countUp() {
+  const el = $("#stat-projects");
+  const target = PROJECTS.length;
+  let n = 0;
+  const tick = () => { el.textContent = n; if (n++ < target) setTimeout(tick, 70); };
+  tick();
+}
+
+/* =========================================================
+   VISUELS ANIMÉS (canvas, sans librairie)
+   ========================================================= */
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+function fitCanvas(c) {
+  const r = c.getBoundingClientRect();
+  const dpr = window.devicePixelRatio || 1;
+  c.width = r.width * dpr; c.height = r.height * dpr;
+  const ctx = c.getContext("2d");
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  return { ctx, w: r.width, h: r.height };
+}
+
+// Fond : grille de points discrète
+function gridBackground() {
+  const c = $("#grid-bg");
+  const draw = () => {
+    const { ctx, w, h } = fitCanvas(c);
+    ctx.clearRect(0, 0, w, h);
+    ctx.fillStyle = `rgba(${T.acc},0.18)`;
+    for (let x = 0; x < w; x += 32) for (let y = 0; y < h; y += 32) ctx.fillRect(x, y, 1.2, 1.2);
+  };
+  draw();
+  window.addEventListener("resize", draw);
+}
+
+// JARVIS : anneaux + onde vocale
+function voiceVisual(c) {
+  let t = 0, ctx, w, h;
+  const resize = () => ({ ctx, w, h } = fitCanvas(c));
+  resize(); window.addEventListener("resize", resize);
+  const frame = () => {
+    ctx.clearRect(0, 0, w, h);
+    const cx = w / 2, cy = h / 2, R = Math.min(w, h) * 0.32;
+    for (let i = 0; i < 3; i++) {
+      ctx.beginPath();
+      ctx.strokeStyle = `rgba(${T.acc},${0.5 - i * 0.13})`;
+      ctx.lineWidth = 2;
+      ctx.setLineDash([20 + i * 10, 12]);
+      ctx.lineDashOffset = (i % 2 ? 1 : -1) * t * (40 + i * 20);
+      ctx.arc(cx, cy, R + i * 18, 0, Math.PI * 2);
+      ctx.stroke();
+    }
+    ctx.setLineDash([]);
+    const bars = 48;
+    for (let i = 0; i < bars; i++) {
+      const a = (i / bars) * Math.PI * 2;
+      const amp = 6 + 22 * Math.abs(Math.sin(t * 3 + i * 0.5) * Math.cos(t * 1.7 + i * 0.23));
+      const r0 = R * 0.55, r1 = r0 + amp;
+      ctx.beginPath();
+      ctx.strokeStyle = i % 6 === 0 ? `rgb(${T.acc2})` : `rgba(${T.acc},.9)`;
+      ctx.lineWidth = 2.5;
+      ctx.moveTo(cx + Math.cos(a) * r0, cy + Math.sin(a) * r0);
+      ctx.lineTo(cx + Math.cos(a) * r1, cy + Math.sin(a) * r1);
+      ctx.stroke();
+    }
+    ctx.fillStyle = `rgba(${T.acc},.85)`;
+    ctx.font = "600 13px Plus Jakarta Sans, sans-serif";
+    ctx.textAlign = "center";
+    ctx.fillText("« Jarvis, à l'écoute »", cx, h - 18);
+    t += 0.016;
+    if (!reduceMotion) requestAnimationFrame(frame);
+  };
+  frame();
+}
+
+// Volumetric : nuage de points d'un tore en rotation, coloré par hauteur
+function torusVisual(c) {
+  const pts = [];
+  for (let i = 0; i < 48; i++) for (let j = 0; j < 20; j++) {
+    const u = (i / 48) * Math.PI * 2, v = (j / 20) * Math.PI * 2;
+    pts.push([(1 + 0.42 * Math.cos(v)) * Math.cos(u), 0.42 * Math.sin(v), (1 + 0.42 * Math.cos(v)) * Math.sin(u)]);
+  }
+  let t = 0, ctx, w, h;
+  const resize = () => ({ ctx, w, h } = fitCanvas(c));
+  resize(); window.addEventListener("resize", resize);
+  const frame = () => {
+    ctx.clearRect(0, 0, w, h);
+    const s = Math.min(w, h) * 0.3, cx = w / 2, cy = h / 2;
+    const ca = Math.cos(t), sa = Math.sin(t), tilt = 0.55, ct = Math.cos(tilt), st = Math.sin(tilt);
+    const proj = pts.map(([x, y, z]) => {
+      const x1 = x * ca - z * sa, z1 = x * sa + z * ca;
+      const y2 = y * ct - z1 * st, z2 = y * st + z1 * ct;
+      return [x1, y2, z2, y];
+    }).sort((a, b) => a[2] - b[2]);
+    for (const [x, y, z, oy] of proj) {
+      const depth = (z + 1.5) / 3;
+      const hue = 190 + oy * 60;
+      ctx.fillStyle = `hsla(${hue + 30},75%,${50 - depth * 12}%,${0.25 + depth * 0.75})`;
+      ctx.beginPath();
+      ctx.arc(cx + x * s, cy + y * s, 1.2 + depth * 1.8, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    // bras LED rotatif stylisé
+    ctx.strokeStyle = `rgba(${T.acc2},.6)`;
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(cx, cy - s * 0.9); ctx.lineTo(cx, cy + s * 0.9);
+    ctx.stroke();
+    ctx.fillStyle = `rgba(${T.acc},.85)`;
+    ctx.font = "600 13px Plus Jakarta Sans, sans-serif";
+    ctx.textAlign = "center";
+    ctx.fillText(`torus.stl → ${pts.length} voxels`, cx, h - 18);
+    t += 0.012;
+    if (!reduceMotion) requestAnimationFrame(frame);
+  };
+  frame();
+}
+
+
+// Robot : radar à ultrasons qui balaie un demi-cercle
+function radarVisual(c) {
+  let t = 0, ctx, w, h;
+  const resize = () => ({ ctx, w, h } = fitCanvas(c));
+  resize(); window.addEventListener("resize", resize);
+  const obstacles = [[-0.9, 0.55], [-0.35, 0.8], [0.3, 0.45], [0.95, 0.7]];
+  const frame = () => {
+    ctx.clearRect(0, 0, w, h);
+    const cx = w / 2, cy = h - 40, R = Math.min(w / 2, h - 60) * 0.95;
+    ctx.strokeStyle = `rgba(${T.acc},.25)`; ctx.lineWidth = 1;
+    for (let i = 1; i <= 4; i++) { ctx.beginPath(); ctx.arc(cx, cy, (R * i) / 4, Math.PI, 0); ctx.stroke(); }
+    for (let a = 0; a <= 180; a += 30) {
+      const r = (a * Math.PI) / 180;
+      ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx - Math.cos(r) * R, cy - Math.sin(r) * R); ctx.stroke();
+    }
+    const sweep = (Math.sin(t) * 0.5 + 0.5) * Math.PI;
+    const g = ctx.createLinearGradient(cx, cy, cx - Math.cos(sweep) * R, cy - Math.sin(sweep) * R);
+    g.addColorStop(0, `rgba(${T.acc},.9)`); g.addColorStop(1, `rgba(${T.acc},0)`);
+    ctx.strokeStyle = g; ctx.lineWidth = 3;
+    ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx - Math.cos(sweep) * R, cy - Math.sin(sweep) * R); ctx.stroke();
+    for (const [ang, dist] of obstacles) {
+      const a = ((ang + 1) / 2) * Math.PI;
+      const near = Math.abs(a - sweep) < 0.35;
+      ctx.fillStyle = near ? `rgb(${T.acc2})` : `rgba(${T.acc2},.25)`;
+      ctx.beginPath(); ctx.arc(cx - Math.cos(a) * R * dist, cy - Math.sin(a) * R * dist, near ? 6 : 4, 0, Math.PI * 2); ctx.fill();
+    }
+    ctx.fillStyle = `rgb(${T.acc})`; ctx.fillRect(cx - 14, cy - 8, 28, 16);
+    ctx.fillStyle = `rgba(${T.acc},.85)`; ctx.font = "600 13px Plus Jakarta Sans, sans-serif"; ctx.textAlign = "center";
+    ctx.fillText(`HC-SR04 · ${Math.round((sweep * 180) / Math.PI)}° · obstacle détecté`, cx, h - 12);
+    t += 0.02;
+    if (!reduceMotion) requestAnimationFrame(frame);
+  };
+  frame();
+}
+
+// Serveur : nœuds reliés au serveur central avec paquets qui circulent
+function networkVisual(c) {
+  let t = 0, ctx, w, h;
+  const resize = () => ({ ctx, w, h } = fitCanvas(c));
+  resize(); window.addEventListener("resize", resize);
+  const nodes = ["Photos", "Cloud", "Films", "Musique", "VPN", "Domotique", "IA", "Backup"];
+  const frame = () => {
+    ctx.clearRect(0, 0, w, h);
+    const cx = w / 2, cy = h / 2 - 8, R = Math.min(w, h) * 0.36;
+    ctx.font = "600 11px Plus Jakarta Sans, sans-serif"; ctx.textAlign = "center";
+    nodes.forEach((name, i) => {
+      const a = (i / nodes.length) * Math.PI * 2 - Math.PI / 2;
+      const x = cx + Math.cos(a) * R, y = cy + Math.sin(a) * R;
+      ctx.strokeStyle = `rgba(${T.acc},.25)`; ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(x, y); ctx.stroke();
+      const p = (t * 0.6 + i * 0.37) % 1;
+      const out = i % 2 === 0;
+      const k = out ? p : 1 - p;
+      ctx.fillStyle = out ? `rgb(${T.acc})` : `rgb(${T.acc2})`;
+      ctx.beginPath(); ctx.arc(cx + (x - cx) * k, cy + (y - cy) * k, 2.5, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = `rgb(${T.paper})`; ctx.strokeStyle = `rgba(${T.acc},.7)`;
+      ctx.beginPath(); ctx.arc(x, y, 7, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+      ctx.fillStyle = `rgba(${T.ink},.8)`;
+      ctx.fillText(name, x, y + (Math.sin(a) > 0 ? 22 : -14));
+    });
+    const pulse = 18 + Math.sin(t * 3) * 3;
+    ctx.fillStyle = `rgba(${T.acc},.15)`; ctx.beginPath(); ctx.arc(cx, cy, pulse + 10, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = `rgb(${T.acc})`; ctx.fillRect(cx - 16, cy - 12, 32, 24);
+    ctx.fillStyle = `rgb(${T.paper})`; ctx.fillRect(cx - 11, cy - 6, 22, 3); ctx.fillRect(cx - 11, cy + 2, 22, 3);
+    ctx.fillStyle = `rgba(${T.acc},.85)`; ctx.font = "600 13px Plus Jakarta Sans, sans-serif";
+    ctx.fillText("homelab · docker ps", cx, h - 12);
+    t += 0.016;
+    if (!reduceMotion) requestAnimationFrame(frame);
+  };
+  frame();
+}
+
+// Clone Instagram : téléphone avec fil de publications qui défile
+function feedVisual(c) {
+  let t = 0, ctx, w, h;
+  const resize = () => ({ ctx, w, h } = fitCanvas(c));
+  resize(); window.addEventListener("resize", resize);
+  const hues = [330, 200, 40, 270, 160, 10];
+  const rr = (x, y, ww, hh, r) => { ctx.beginPath(); ctx.roundRect(x, y, ww, hh, r); };
+  const frame = () => {
+    ctx.clearRect(0, 0, w, h);
+    const pw = Math.min(170, w * 0.45), ph = h - 30, px = w / 2 - pw / 2, py = 15;
+    ctx.save();
+    rr(px, py, pw, ph, 18); ctx.fillStyle = `rgb(${T.paper})`; ctx.fill();
+    ctx.strokeStyle = `rgba(${T.acc},.6)`; ctx.lineWidth = 2; ctx.stroke();
+    ctx.clip();
+    const postH = pw + 40;
+    const off = (t * 30) % postH;
+    for (let i = -1; i < 4; i++) {
+      const idx = ((Math.floor((t * 30) / postH) + i) % hues.length + hues.length) % hues.length;
+      const y = py + 34 + i * postH - off;
+      ctx.fillStyle = `hsl(${hues[idx]},70%,60%)`;
+      ctx.beginPath(); ctx.arc(px + 16, y + 8, 7, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = `rgba(${T.ink},.5)`; ctx.fillRect(px + 28, y + 5, 50, 6);
+      const g = ctx.createLinearGradient(px, y + 20, px + pw, y + 20 + pw * 0.8);
+      g.addColorStop(0, `hsl(${hues[idx]},70%,55%)`); g.addColorStop(1, `hsl(${hues[(idx + 2) % hues.length]},70%,45%)`);
+      ctx.fillStyle = g; ctx.fillRect(px, y + 20, pw, pw * 0.8);
+      const liked = Math.sin(t * 2 + i) > 0.3;
+      ctx.fillStyle = liked ? "#ff4d6d" : `rgba(${T.ink},.6)`;
+      ctx.font = "16px sans-serif"; ctx.textAlign = "left";
+      ctx.fillText(liked ? "♥" : "♡", px + 8, y + 20 + pw * 0.8 + 18);
+      ctx.fillText("💬", px + 30, y + 20 + pw * 0.8 + 18);
+    }
+    ctx.fillStyle = `rgb(${T.paper})`; ctx.fillRect(px, py, pw, 28);
+    ctx.fillStyle = `rgb(${T.ink})`; ctx.font = "800 14px Plus Jakarta Sans, sans-serif"; ctx.textAlign = "left";
+    ctx.fillText("Mon réseau", px + 12, py + 19);
+    ctx.restore();
+    t += 0.016;
+    if (!reduceMotion) requestAnimationFrame(frame);
+  };
+  frame();
+}
+
+// Robot plantes : mini écran de stats + notification téléphone
+function plantVisual(c) {
+  let t = 0, ctx, w, h;
+  const resize = () => ({ ctx, w, h } = fitCanvas(c));
+  resize(); window.addEventListener("resize", resize);
+  const frame = () => {
+    ctx.clearRect(0, 0, w, h);
+    const humid = 55 + 35 * Math.cos(t * 0.5);   // descend sous 25 % -> alerte
+    const ph = 6.4 + 0.3 * Math.sin(t * 0.7);
+    const lux = 60 + 25 * Math.sin(t * 0.4 + 1);
+    const alert = humid < 28;
+    // plante
+    const px = w * 0.27, base = h - 40;
+    ctx.fillStyle = "#3a2a1e"; ctx.beginPath();
+    ctx.moveTo(px - 38, base - 40); ctx.lineTo(px + 38, base - 40); ctx.lineTo(px + 28, base); ctx.lineTo(px - 28, base); ctx.fill();
+    ctx.strokeStyle = alert ? "#a3a35a" : "#3f9a5a"; ctx.lineWidth = 4;
+    const droop = alert ? 0.6 : 0;
+    ctx.beginPath(); ctx.moveTo(px, base - 40); ctx.quadraticCurveTo(px + 5, base - 90, px + droop * 30, base - 130 + droop * 30); ctx.stroke();
+    ctx.fillStyle = alert ? "#a3a35a" : "#3f9a5a";
+    [[-1, 75], [1, 100], [-1, 115]].forEach(([d, y]) => {
+      ctx.beginPath(); ctx.ellipse(px + d * 20, base - y + droop * 20, 18, 8, d * (0.5 + droop), 0, Math.PI * 2); ctx.fill();
+    });
+    // capteur planté
+    ctx.fillStyle = `rgb(${T.acc})`; ctx.fillRect(px + 22, base - 62, 4, 30);
+    // petit écran
+    const sx = w * 0.5, sy = h * 0.18, sw = Math.min(170, w * 0.42), sh = 120;
+    ctx.fillStyle = "#14161a"; ctx.strokeStyle = `rgb(${T.ink})`; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.roundRect(sx, sy, sw, sh, 8); ctx.fill(); ctx.stroke();
+    ctx.font = "600 12px Plus Jakarta Sans, sans-serif"; ctx.textAlign = "left";
+    const rows = [["Humidité", `${humid.toFixed(0)} %`, humid / 100, alert], ["pH", ph.toFixed(1), (ph - 4) / 5, false], ["Lumière", `${(lux * 120).toFixed(0)} lx`, lux / 100, false]];
+    rows.forEach(([k, v, p, bad], i) => {
+      const y = sy + 26 + i * 32;
+      ctx.fillStyle = "rgba(240,240,240,.8)"; ctx.fillText(k, sx + 10, y);
+      ctx.fillStyle = bad ? "#ff4d6d" : "#7fd4ff"; ctx.textAlign = "right"; ctx.fillText(v, sx + sw - 10, y); ctx.textAlign = "left";
+      ctx.fillStyle = "rgba(127,212,255,.2)"; ctx.fillRect(sx + 10, y + 6, sw - 20, 4);
+      ctx.fillStyle = bad ? "#ff4d6d" : "#7fd4ff"; ctx.fillRect(sx + 10, y + 6, (sw - 20) * Math.max(0, Math.min(1, p)), 4);
+    });
+    // notification téléphone
+    if (alert) {
+      const ny = sy + sh + 18;
+      ctx.fillStyle = "rgba(255,77,109,.12)"; ctx.strokeStyle = "#ff4d6d";
+      ctx.beginPath(); ctx.roundRect(sx, ny, sw, 44, 10); ctx.fill(); ctx.stroke();
+      ctx.fillStyle = "#ff4d6d"; ctx.font = "600 11px Plus Jakarta Sans, sans-serif";
+      ctx.fillText("📱 URGENCE", sx + 10, ny + 18);
+      ctx.fillStyle = `rgba(${T.ink},.85)`; ctx.fillText("Terre trop sèche !", sx + 10, ny + 34);
+    }
+    ctx.fillStyle = `rgba(${T.acc},.85)`; ctx.font = "600 13px Plus Jakarta Sans, sans-serif"; ctx.textAlign = "center";
+    ctx.fillText(alert ? "ESP32-C3 → alerte Wi-Fi envoyée" : "ESP32-C3 · OLED · BH1750", w / 2, h - 12);
+    t += 0.02;
+    if (!reduceMotion) requestAnimationFrame(frame);
+  };
+  frame();
+}
+
+// COMBO : tenue composée de 5 emplacements qui changent
+function outfitVisual(c) {
+  let t = 0, ctx, w, h;
+  const resize = () => ({ ctx, w, h } = fitCanvas(c));
+  resize(); window.addEventListener("resize", resize);
+  const slots = ["Veste", "Haut", "Bas", "Chaussures", "Accessoire"];
+  const palette = [[210, 60], [10, 70], [45, 80], [160, 50], [280, 55], [330, 65], [190, 75]];
+  const frame = () => {
+    ctx.clearRect(0, 0, w, h);
+    const cols = 2, cw = Math.min(120, w * 0.3), chh = (h - 80) / 3;
+    const ox = w / 2 - cw - 8, oy = 24;
+    slots.forEach((name, i) => {
+      const x = ox + (i % cols) * (cw + 16), y = oy + Math.floor(i / cols) * (chh + 8);
+      const step = Math.floor(t * 0.8 + i * 0.6);
+      const [hue, sat] = palette[(step + i * 2) % palette.length];
+      const fresh = (t * 0.8 + i * 0.6) % 1 < 0.15;
+      ctx.fillStyle = `rgb(${T.paper})`; ctx.strokeStyle = fresh ? `rgb(${T.acc2})` : `rgba(${T.acc},.4)`; ctx.lineWidth = fresh ? 2 : 1;
+      ctx.beginPath(); ctx.roundRect(x, y, cw, chh, 10); ctx.fill(); ctx.stroke();
+      ctx.fillStyle = `hsl(${hue},${sat}%,55%)`;
+      ctx.beginPath(); ctx.roundRect(x + 14, y + 12, cw - 28, chh - 38, 6); ctx.fill();
+      ctx.fillStyle = `rgba(${T.ink},.75)`; ctx.font = "600 11px Plus Jakarta Sans, sans-serif"; ctx.textAlign = "center";
+      ctx.fillText(name, x + cw / 2, y + chh - 10);
+    });
+    ctx.fillStyle = `rgba(${T.acc},.85)`; ctx.font = "600 13px Plus Jakarta Sans, sans-serif"; ctx.textAlign = "center";
+    ctx.fillText("IA de style · nouvelle tenue", w / 2, h - 12);
+    t += 0.016;
+    if (!reduceMotion) requestAnimationFrame(frame);
+  };
+  frame();
+}
+
+function startVisuals() {
+  document.querySelectorAll("canvas[data-visual]").forEach((c) => {
+    if (c.dataset.visual === "voice") voiceVisual(c);
+    if (c.dataset.visual === "torus") torusVisual(c);
+    if (c.dataset.visual === "radar") radarVisual(c);
+    if (c.dataset.visual === "network") networkVisual(c);
+    if (c.dataset.visual === "feed") feedVisual(c);
+    if (c.dataset.visual === "plant") plantVisual(c);
+    if (c.dataset.visual === "outfit") outfitVisual(c);
+  });
+}
+
+/* ========================================================= */
+setupTheme();
+applyConfig();
+renderFeatured();
+renderGrid();
+renderSkills();
+setupFilters();
+setupModal();
+setupReveal();
+startVisuals();
+
+</script>
+</body>
+</html>

@@ -103,6 +103,9 @@ section { padding: 4.5rem 0 1rem; }
 .feat-visual { border-radius: 14px; background: var(--bg); min-height: 280px; position: relative; overflow: hidden; }
 .feat-visual canvas { width: 100%; height: 100%; position: absolute; inset: 0; }
 .more { color: var(--accent); font-weight: 600; font-size: .95rem; }
+.feat-actions { margin-top: 1rem; display: flex; gap: 1.2rem; align-items: center; flex-wrap: wrap; }
+.repo-link { font-weight: 600; font-size: .95rem; color: var(--ink); text-decoration: none; border: 1px solid currentColor; border-radius: 999px; padding: .35rem .9rem; transition: background .2s, color .2s; }
+.repo-link:hover { background: var(--ink); color: var(--paper); }
 
 .tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: 1rem; }
 .tags span { font-size: .78rem; font-weight: 600; padding: .25rem .65rem; border-radius: 8px; background: var(--bg); color: var(--ink); border: 1px solid var(--line); }
@@ -186,6 +189,9 @@ dialog::backdrop { background: rgba(29,27,24,.45); }
 #modal-content p, #modal-content li { color: var(--muted); }
 #modal-content ul { padding-left: 1.2rem; display: grid; gap: .3rem; }
 #modal-content .links { margin-top: 1.5rem; display: flex; gap: .8rem; flex-wrap: wrap; }
+#modal-content .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: .6rem; margin: 1.2rem 0 .4rem; }
+#modal-content .gallery img { width: 100%; height: 120px; object-fit: cover; object-position: top; border-radius: 10px; border: 1px solid rgba(0,0,0,.08); transition: transform .2s; }
+#modal-content .gallery a:hover img { transform: scale(1.03); }
 
 .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s, transform .6s; }
 .reveal.visible { opacity: 1; transform: none; }
@@ -361,6 +367,7 @@ const CONFIG = {
    cats: perso | web | hardware
    status: "done" (terminé) | "wip" (en cours)
    repo: lien GitHub du projet (laisse "" si pas encore publié)
+   images: captures affichées dans la fenêtre du projet (optionnel)
    ========================================================= */
 const PROJECTS = [
   {
@@ -369,33 +376,44 @@ const PROJECTS = [
     visual: "voice",
     icon: "🎙️",
     title: "J.A.R.V.I.S",
-    kicker: "Assistant IA vocal · Windows",
-    short: "Assistant personnel à commande vocale avec interface holographique, cascade de modèles d'IA et contrôle complet de Windows.",
+    kicker: "Assistant IA vocal · Windows + iPhone",
+    short: "Mon assistant personnel à commande vocale : briefing du matin, agenda, rappels, mails, interface holographique, et utilisable depuis mon iPhone.",
     highlights: [
-      "Cascade d'IA : LLaMA 3 en local (Ollama) → Groq → Mistral → Gemini, pour réduire les coûts",
-      "Voix réaliste ElevenLabs avec repli hors-ligne (pyttsx3)",
-      "Contrôle par gestes de la main (MediaPipe) : poing, main ouverte, pouce haut/bas",
-      "Moteur d'auto-modification : génère du code, montre un aperçu, fait un backup puis redémarre",
+      "Briefing du matin : cours du jour, rappels, prochains DS, mails non lus, news science/tech et foot",
+      "Agenda : lit mon emploi du temps et ajoute / déplace / supprime des événements dans le Calendrier iPhone (iCloud)",
+      "Accès depuis l'iPhone via Tailscale + Raccourcis iOS, protégé par un code secret",
+      "Cascade d'IA (Groq → Mistral → Gemini → Ollama en local), voix ElevenLabs, contrôle par gestes",
     ],
     details: {
-      context: "Projet personnel : créer un vrai assistant de bureau, activable à la voix (« Jarvis » ou Ctrl+Shift+J), avec une interface web futuriste servie en local.",
+      context: "Projet personnel : un vrai assistant de bureau, activable à la voix (« Jarvis » ou Ctrl+Shift+J), avec une interface web futuriste servie en local, qui organise ma journée d'étudiant et que je peux aussi utiliser depuis mon téléphone.",
       features: [
-        "Interface web holographique (localhost) avec panneaux : chat, finance, gaming, emails, gestes",
-        "Carte holographique Leaflet.js avec 6 modes visuels",
-        "Rédaction d'emails Gmail lue à voix haute avant envoi",
-        "Bons plans jeux (CheapShark, Epic Games), cours crypto (CoinGecko) et bourse (Yahoo Finance)",
-        "Modes de concentration (gaming, code, étude…), lancement / fermeture / désinstallation propre d'applis",
+        "Briefing du matin lu à voix haute et enregistré dans mon coffre Obsidian",
+        "Emploi du temps HyperPlanning (.ics) : « mes cours lundi », « mon prochain DS » avec le nom de la matière",
+        "Calendrier iPhone via iCloud (CalDAV) : ajout, déplacement et suppression d'événements à la voix",
+        "Rappels écrits dans Obsidian (« rajoute un rappel lundi de… ») et repris dans le briefing",
+        "Lecture des mails de la fac (IMAP) sans les marquer comme lus",
+        "Serveur privé pour l'iPhone (Tailscale + token) et deux Raccourcis iOS : parler à JARVIS et briefing au réveil",
+        "Contrôle par gestes (MediaPipe GestureRecognizer), carte holographique Leaflet, démarrage automatique avec Windows",
+        "Moteur d'auto-modification : génère du code, montre un aperçu, fait un backup puis redémarre",
       ],
       challenges: [
-        "Serveur HTTP bloqué par l'écoute du mot-clé → écoute déplacée dans un thread daemon + ThreadingTCPServer",
-        "Installeur .bat qui plantait à cause des caractères Unicode dans CMD → réécrit en ASCII pur",
-        "API qui évoluent : migration vers google-genai et nouveau nom de modèle Groq",
+        "Modèle Groq retiré par le fournisseur → migration vers un nouveau modèle, réglable dans la config",
+        "MediaPipe a supprimé son ancienne API → réécriture des gestes avec la nouvelle API Tasks",
+        "Fonds de carte devenus payants → passage à des tuiles gratuites sans clé API",
+        "Commandes vocales coupées trop tôt → réglage de la détection de fin de phrase",
+        "Publication open source : secrets isolés dans un fichier de config ignoré par Git",
       ],
     },
-    tags: ["Python", "JavaScript", "HTML/CSS", "Ollama", "MediaPipe", "API REST"],
+    images: [
+      { src: "https://raw.githubusercontent.com/ukiyoaj/jarvis/main/screenshots/dashboard.png", alt: "Tableau de bord de JARVIS" },
+      { src: "https://raw.githubusercontent.com/ukiyoaj/jarvis/main/screenshots/holographic-map.png", alt: "Carte holographique" },
+      { src: "https://raw.githubusercontent.com/ukiyoaj/jarvis/main/screenshots/iphone-voice.jpg", alt: "Commande vocale depuis l'iPhone" },
+      { src: "https://raw.githubusercontent.com/ukiyoaj/jarvis/main/screenshots/iphone-calendar.jpg", alt: "Événement ajouté par JARVIS" },
+    ],
+    tags: ["Python", "JavaScript", "HTML/CSS", "Groq", "Ollama", "MediaPipe", "CalDAV", "Tailscale", "iOS Shortcuts"],
     cats: ["perso", "web"],
     status: "done",
-    repo: "",
+    repo: "https://github.com/ukiyoaj/jarvis",
   },
   {
     id: "combo",
@@ -655,7 +673,7 @@ function renderFeatured() {
           <p>${esc(p.short)}</p>
           <ul>${p.highlights.map((h) => `<li>${esc(h)}</li>`).join("")}</ul>
           ${tagsHTML(p.tags)}
-          <p class="more" style="margin-top:1rem">Voir le détail →</p>
+          <p class="feat-actions"><span class="more">Voir le détail →</span>${p.repo ? `<a class="repo-link" href="${esc(p.repo)}" target="_blank" rel="noopener">Code sur GitHub ↗</a>` : ""}</p>
         </div>
         <div class="feat-visual"><canvas data-visual="${p.visual}"></canvas></div>
       </article>`)
@@ -670,6 +688,7 @@ function renderGrid() {
         <h3>${esc(p.title)}</h3>
         <p>${esc(p.short)}</p>
         ${tagsHTML(p.tags)}
+        ${p.repo ? `<p class="feat-actions"><a class="repo-link" href="${esc(p.repo)}" target="_blank" rel="noopener">Code sur GitHub ↗</a></p>` : ""}
       </article>`)
     .join("");
 }
@@ -701,6 +720,7 @@ function openModal(id) {
     <span class="feat-kicker">${p.icon} ${statusHTML(p.status)}</span>
     <h3>${esc(p.title)}</h3>
     <p>${esc(d.context || p.short)}</p>
+    ${p.images && p.images.length ? `<div class="gallery">${p.images.map((im) => `<a href="${esc(im.src)}" target="_blank" rel="noopener"><img src="${esc(im.src)}" alt="${esc(im.alt || p.title)}" loading="lazy" onerror="this.parentElement.remove()"></a>`).join("")}</div>` : ""}
     ${d.features ? `<h4>Fonctionnalités</h4>${list(d.features)}` : ""}
     ${d.challenges ? `<h4>Problèmes résolus</h4>${list(d.challenges)}` : ""}
     <h4>Technos</h4>${tagsHTML(p.tags)}
@@ -710,6 +730,7 @@ function openModal(id) {
 
 function setupModal() {
   document.addEventListener("click", (e) => {
+    if (e.target.closest(".repo-link")) return;
     const item = e.target.closest("[data-id]");
     if (item) openModal(item.dataset.id);
   });

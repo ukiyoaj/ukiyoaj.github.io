@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Amine Jebali — Portfolio</title>
-  <meta name="description" content="Portfolio d'Amine Jebali : assistant IA JARVIS, pipeline d'affichage volumétrique, clone d'Instagram, robotique Arduino et serveur maison." />
+  <meta name="description" content="Portfolio d'Amine Jebali : assistant IA JARVIS, pipeline d'affichage volumétrique, clone d'Instagram, robotique Arduino, serveur maison et effets web open source." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -177,6 +177,7 @@ footer { text-align: center; padding: 2rem; color: var(--muted); font-size: .85r
   border: 1.5px solid var(--line); background: var(--paper); color: var(--ink); display: grid; place-items: center;
 }
 .theme-toggle:hover { border-color: var(--ink); }
+.lang-toggle { font-size: .8rem; font-weight: 800; letter-spacing: .02em; }
 .nav-right { display: flex; align-items: center; gap: clamp(1rem, 3vw, 2rem); }
 
 /* MODAL */
@@ -225,12 +226,13 @@ dialog::backdrop { background: rgba(29,27,24,.45); }
     <a href="#top" class="nav-logo" data-field="name">Amine Jebali</a>
     <div class="nav-right">
     <nav>
-      <a href="#projets">Projets</a>
-      <a href="#apropos">À propos</a>
-      <a href="#competences">Compétences</a>
-      <a href="#parcours">Parcours</a>
-      <a href="#contact">Contact</a>
+      <a href="#projets" data-i18n="nav.projets">Projets</a>
+      <a href="#apropos" data-i18n="nav.apropos">À propos</a>
+      <a href="#competences" data-i18n="nav.competences">Compétences</a>
+      <a href="#parcours" data-i18n="nav.parcours">Parcours</a>
+      <a href="#contact" data-i18n="nav.contact">Contact</a>
     </nav>
+    <button class="theme-toggle lang-toggle" id="lang-toggle" aria-label="Switch to English" title="English / Français">EN</button>
     <button class="theme-toggle" id="theme-toggle" aria-label="Changer de thème" title="Mode jour / nuit">🌙</button>
     </div>
   </header>
@@ -239,90 +241,90 @@ dialog::backdrop { background: rgba(29,27,24,.45); }
     <!-- HERO -->
     <section class="hero">
       <div>
-        <h1>Bonjour, je suis <span class="hl">Amine</span>.</h1>
-        <p class="hero-sub">
+        <h1 data-i18n="hero.h1">Bonjour, je suis <span class="hl">Amine</span>.</h1>
+        <p class="hero-sub" data-i18n="hero.sub">
           Étudiant en informatique à Bordeaux. J'aime les projets où le code sort de l'écran :
           un assistant vocal, des capteurs pour mes plantes, une voiture autonome, un serveur à la maison…
           Voici ce que j'ai construit.
         </p>
         <div class="hero-cta">
-          <a class="btn btn-primary" href="#projets">Voir mes projets</a>
-          <a class="btn" href="#contact">Me contacter</a>
+          <a class="btn btn-primary" href="#projets" data-i18n="hero.cta1">Voir mes projets</a>
+          <a class="btn" href="#contact" data-i18n="hero.cta2">Me contacter</a>
         </div>
       </div>
       <aside class="hero-card">
-        <p><strong>En ce moment</strong></p>
+        <p data-i18n="now.title"><strong>En ce moment</strong></p>
         <ul>
-          <li><span>01</span><p>Je finalise mon capteur connecté pour plantes (ESP32-C3).</p></li>
-          <li><span>02</span><p>Je monte mon serveur maison sous Ubuntu Server.</p></li>
-          <li><span>03</span><p>Je fais évoluer mon appli COMBO.</p></li>
+          <li><span>01</span><p data-i18n="now.1">Je finalise mon capteur connecté pour plantes (ESP32-C3).</p></li>
+          <li><span>02</span><p data-i18n="now.2">Je monte mon serveur maison sous Ubuntu Server.</p></li>
+          <li><span>03</span><p data-i18n="now.3">Je fais évoluer mon appli COMBO.</p></li>
         </ul>
       </aside>
     </section>
 
     <!-- FEATURED -->
     <section id="projets">
-      <h2 class="section-title">Projets phares</h2>
-      <p class="section-intro">Clique sur un projet pour voir le détail.</p>
+      <h2 class="section-title" data-i18n="feat.title">Projets phares</h2>
+      <p class="section-intro" data-i18n="feat.intro">Clique sur un projet pour voir le détail.</p>
       <div class="featured" id="featured"></div>
     </section>
 
     <!-- OTHER PROJECTS -->
     <section>
-      <h2 class="section-title">Autres projets</h2>
-      <p class="section-intro">Des projets plus petits, ou encore en cours.</p>
+      <h2 class="section-title" data-i18n="other.title">Autres projets</h2>
+      <p class="section-intro" data-i18n="other.intro">Des projets plus petits, des effets web open source, ou des projets encore en cours.</p>
       <div class="filters" id="filters" role="tablist">
-        <button class="chip active" data-filter="all">Tous</button>
-        <button class="chip" data-filter="perso">Perso</button>
-        <button class="chip" data-filter="web">Web</button>
-        <button class="chip" data-filter="hardware">Hardware</button>
+        <button class="chip active" data-filter="all" data-i18n="filter.all">Tous</button>
+        <button class="chip" data-filter="perso" data-i18n="filter.perso">Perso</button>
+        <button class="chip" data-filter="web" data-i18n="filter.web">Web</button>
+        <button class="chip" data-filter="hardware" data-i18n="filter.hardware">Hardware</button>
       </div>
       <div class="grid" id="projects-grid"></div>
     </section>
 
     <!-- ABOUT -->
     <section id="apropos">
-      <h2 class="section-title">À propos de moi</h2>
-      <p class="section-intro">En dehors du code.</p>
+      <h2 class="section-title" data-i18n="about.title">À propos de moi</h2>
+      <p class="section-intro" data-i18n="about.intro">En dehors du code.</p>
       <div class="about">
         <div class="about-intro reveal">
-          <p>Le code, ce n'est qu'une partie de moi. Je fais du <strong>sport</strong> depuis tout petit, du judo au foot. Aujourd'hui je joue en R2, et je fais aussi de la musculation.</p>
-          <p>J'aime <strong>créer</strong> : une marque de vêtements, un manga, des applis. Et je m'<strong>engage</strong> volontiers pour les autres, au CVL hier et comme délégué aujourd'hui.</p>
-          <div class="about-badges"><span>🥋 Judo</span><span>⚽ Foot R2</span><span>🏋️ Muscu</span><span>👕 Jeryo</span><span>✏️ Manga</span><span>🌍 MUN</span></div>
+          <p data-i18n="about.p1">Le code, ce n'est qu'une partie de moi. Je fais du <strong>sport</strong> depuis tout petit, du judo au foot. Aujourd'hui je joue en R2, et je fais aussi de la musculation.</p>
+          <p data-i18n="about.p2">J'aime <strong>créer</strong> : une marque de vêtements, un manga, des applis. Et je m'<strong>engage</strong> volontiers pour les autres, au CVL hier et comme délégué aujourd'hui.</p>
+          <div class="about-badges" data-i18n="about.badges"><span>🥋 Judo</span><span>⚽ Foot R2</span><span>🏋️ Muscu</span><span>👕 Jeryo</span><span>✏️ Manga</span><span>🌍 MUN</span></div>
         </div>
         <ol class="about-list reveal">
-          <li><span class="yr">Aujourd'hui</span><span class="cat engage">Engagement</span><p>Délégué et représentant des étudiants de 1<sup>re</sup> année au conseil de département</p></li>
-          <li><span class="yr">2025</span><span class="cat crea">Création</span><p>Création de ma marque de vêtements, <strong>Jeryo</strong></p></li>
-          <li><span class="yr">2024</span><span class="cat crea">Création</span><p>Création d'un manga : le premier chapitre est en cours d'illustration</p></li>
-          <li><span class="yr">2023 → auj.</span><span class="cat sport">Sport</span><p>Musculation depuis 3 ans</p></li>
-          <li><span class="yr">2022 – 2023</span><span class="cat engage">Engagement</span><p>Élu au conseil de la vie lycéenne (CVL) en seconde</p></li>
-          <li><span class="yr">2021 – 2022</span><span class="cat engage">Engagement</span><p>MUN (Model United Nations) à Dubaï, en 3<sup>e</sup></p></li>
-          <li><span class="yr">2021 – 2022</span><span class="cat engage">Transmission</span><p>Animation d'ateliers d'initiation à Scratch pour des collégiens</p></li>
-          <li><span class="yr">2016 → auj.</span><span class="cat sport">Sport</span><p>Football en R2 (Régional 2)</p></li>
-          <li><span class="yr">2014</span><span class="cat sport">Sport</span><p>Vainqueur d'un tournoi national de judo au Gabon</p></li>
+          <li data-i18n="about.1"><span class="yr">Aujourd'hui</span><span class="cat engage">Engagement</span><p>Délégué et représentant des étudiants de 1<sup>re</sup> année au conseil de département</p></li>
+          <li data-i18n="about.2"><span class="yr">2025</span><span class="cat crea">Création</span><p>Création de ma marque de vêtements, <strong>Jeryo</strong></p></li>
+          <li data-i18n="about.3"><span class="yr">2024</span><span class="cat crea">Création</span><p>Création d'un manga : le premier chapitre est en cours d'illustration</p></li>
+          <li data-i18n="about.4"><span class="yr">2023 → auj.</span><span class="cat sport">Sport</span><p>Musculation depuis 3 ans</p></li>
+          <li data-i18n="about.5"><span class="yr">2022 – 2023</span><span class="cat engage">Engagement</span><p>Élu au conseil de la vie lycéenne (CVL) en seconde</p></li>
+          <li data-i18n="about.6"><span class="yr">2021 – 2022</span><span class="cat engage">Engagement</span><p>MUN (Model United Nations) à Dubaï, en 3<sup>e</sup></p></li>
+          <li data-i18n="about.7"><span class="yr">2021 – 2022</span><span class="cat engage">Transmission</span><p>Animation d'ateliers d'initiation à Scratch pour des collégiens</p></li>
+          <li data-i18n="about.8"><span class="yr">2016 → auj.</span><span class="cat sport">Sport</span><p>Football en R2 (Régional 2)</p></li>
+          <li data-i18n="about.9"><span class="yr">2014</span><span class="cat sport">Sport</span><p>Vainqueur d'un tournoi national de judo au Gabon</p></li>
         </ol>
       </div>
     </section>
 
     <!-- SKILLS -->
     <section id="competences">
-      <h2 class="section-title">Compétences</h2>
+      <h2 class="section-title" data-i18n="skills.title">Compétences</h2>
       <div class="skills" id="skills"></div>
     </section>
 
     <!-- TIMELINE -->
     <section id="parcours">
-      <h2 class="section-title">Parcours</h2>
+      <h2 class="section-title" data-i18n="tl.title">Parcours</h2>
       <ol class="timeline">
-        <li>
+        <li data-i18n="tl.1">
           <span class="when">2026 →</span>
           <h3>BUT Informatique · Bordeaux</h3>
           <p>Études en développement logiciel, systèmes et réseaux.</p>
         </li>
-        <li>
+        <li data-i18n="tl.2">
           <span class="when">2026</span>
           <h3>Projets personnels</h3>
-          <p>Assistant IA JARVIS, appli COMBO, pipeline d'affichage volumétrique, clone d'Instagram, capteur connecté pour plantes, voiture autonome, serveur maison.</p>
+          <p>Assistant IA JARVIS, appli COMBO, pipeline d'affichage volumétrique, clone d'Instagram, capteur connecté pour plantes, voiture autonome, serveur maison, et deux effets web open source : Essaim lumineux et Chantier en direct.</p>
         </li>
       </ol>
     </section>
@@ -330,7 +332,7 @@ dialog::backdrop { background: rgba(29,27,24,.45); }
     <!-- CONTACT -->
     <section id="contact" class="contact">
       <h2 class="section-title">Contact</h2>
-      <p>Un stage, un projet ou juste une question ? Écris-moi sur LinkedIn.</p>
+      <p data-i18n="contact.p">Un stage, un projet ou juste une question ? Écris-moi sur LinkedIn.</p>
       <div class="contact-links">
         <a class="btn btn-primary" data-field="email-link" href="mailto:ton.email@exemple.com">✉ Email</a>
         <a class="btn" data-field="github-link" href="https://github.com/ukiyoaj" target="_blank" rel="noopener">GitHub</a>
@@ -610,6 +612,67 @@ const PROJECTS = [
     status: "done",
     repo: "",
   },
+  {
+    id: "essaim",
+    icon: "✨",
+    title: "Essaim lumineux",
+    short: "Des milliers d'aiguilles de lumière qui suivent le curseur sur un ciel de nuit, avec horloge et couleurs personnalisables. Open source.",
+    details: {
+      context: "Projet web open source, inspiré d'une vidéo : un fond d'écran vivant où un essaim de particules obéit à la souris (ou au doigt sur téléphone). Publié sur GitHub sous licence MIT pour que d'autres puissent le réutiliser.",
+      features: [
+        "Jusqu'à 12 000 aiguilles dessinées avec WebGL, sans aucune bibliothèque",
+        "Quand la souris bouge, l'essaim la poursuit en vague ; à l'arrêt, il forme un disque qui tourne",
+        "Clic : l'essaim explose puis se reforme ; double-clic : plein écran",
+        "Panneau « Couleurs » : 6 ambiances, 4 couleurs perso, nombre d'aiguilles et taille réglables, réglages mémorisés",
+        "Horloge et date en français en bas de l'écran",
+      ],
+      challenges: [
+        "Première version en canvas 2D pas assez fluide → passage à WebGL : chaque aiguille devient 2 triangles envoyés en un seul appel",
+        "Animation saccadée → la position suivie glisse vers la souris et la physique est découpée en petits pas",
+        "Couleurs qui saturaient en blanc → réglage du mélange additif et de la transparence des queues",
+      ],
+    },
+    images: [
+      { src: "https://raw.githubusercontent.com/ukiyoaj/essaim-lumineux/main/apercu.png", alt: "Essaim lumineux, ambiance Émeraude" },
+      { src: "https://raw.githubusercontent.com/ukiyoaj/essaim-lumineux/main/apercu2.png", alt: "Panneau de personnalisation, ambiance Or" },
+    ],
+    tags: ["JavaScript", "WebGL", "HTML/CSS", "Open source"],
+    cats: ["perso", "web"],
+    status: "done",
+    repo: "https://github.com/ukiyoaj/essaim-lumineux",
+    demo: "https://ukiyoaj.github.io/essaim-lumineux/",
+  },
+  {
+    id: "chantier",
+    icon: "🏗️",
+    title: "Chantier en direct",
+    short: "Des curseurs colorés construisent une page web sous tes yeux, comme une équipe sur un fichier de design multijoueur. Moteur réutilisable, open source.",
+    details: {
+      context: "Projet web open source : un petit moteur JavaScript qu'on ajoute à n'importe quel site. Des curseurs nommés sélectionnent chaque élément, tapent le texte lettre par lettre et font apparaître les blocs pendant que la page descend toute seule.",
+      features: [
+        "16 curseurs (10 sur mobile) avec cadres de sélection, étiquettes de dimensions et traînées",
+        "Texte tapé lettre par lettre sans faire bouger la mise en page",
+        "Défilement automatique qui suit le chantier, arrêté dès que le visiteur scrolle",
+        "Barre de contrôle : vitesse 1× / 2× / 4×, tout construire, rejouer",
+        "Réutilisable : il suffit d'ajouter les classes « b » et « t » aux éléments de sa page",
+        "Respecte l'option « Réduire les animations » du système",
+      ],
+      challenges: [
+        "Rien ne s'animait quand « Réduire les animations » était activé → bouton pour lancer l'animation à la demande",
+        "Un texte vidé puis retapé faisait sauter la page → texte coupé en deux parties, le reste en transparent",
+        "Code séparé du contenu pour en faire un outil que d'autres peuvent utiliser",
+      ],
+    },
+    images: [
+      { src: "https://raw.githubusercontent.com/ukiyoaj/chantier-en-direct/main/demo.gif", alt: "Les curseurs construisent la page" },
+      { src: "https://raw.githubusercontent.com/ukiyoaj/chantier-en-direct/main/apercu.png", alt: "Chantier en direct, en pleine construction" },
+    ],
+    tags: ["JavaScript", "CSS", "Animation", "Open source"],
+    cats: ["perso", "web"],
+    status: "done",
+    repo: "https://github.com/ukiyoaj/chantier-en-direct",
+    demo: "https://ukiyoaj.github.io/chantier-en-direct/",
+  },
 ];
 
 const SKILLS = {
@@ -619,6 +682,316 @@ const SKILLS = {
   "Domaines": ["IA / LLM", "Robotique", "Électronique", "3D", "Web full-stack", "Auto-hébergement"],
 };
 
+
+/* =========================================================
+   LANGUE FR / EN
+   Le français est écrit directement dans la page et dans PROJECTS.
+   Ici, uniquement les traductions anglaises.
+   ========================================================= */
+let LANG = (() => {
+  const q = new URLSearchParams(location.search).get("lang");
+  if (q === "en" || q === "fr") return q;
+  try { const s = localStorage.getItem("lang"); if (s === "en" || s === "fr") return s; } catch (e) {}
+  return (navigator.language || "fr").toLowerCase().startsWith("fr") ? "fr" : "en";
+})();
+const tr = (fr, en) => (LANG === "en" ? en : fr);
+
+const EN = {
+  meta: "Amine Jebali's portfolio: JARVIS AI assistant, volumetric display pipeline, Instagram clone, Arduino robotics, home server and open-source web effects.",
+  static: {
+    "nav.projets": "Projects",
+    "nav.apropos": "About",
+    "nav.competences": "Skills",
+    "nav.parcours": "Background",
+    "nav.contact": "Contact",
+    "hero.h1": 'Hi, I\'m <span class="hl">Amine</span>.',
+    "hero.sub": "Computer science student in Bordeaux, France. I love projects where code leaves the screen: a voice assistant, sensors for my plants, a self-driving car, a server at home… Here's what I've built.",
+    "hero.cta1": "See my projects",
+    "hero.cta2": "Contact me",
+    "now.title": "<strong>Right now</strong>",
+    "now.1": "Finishing my connected plant sensor (ESP32-C3).",
+    "now.2": "Setting up my home server on Ubuntu Server.",
+    "now.3": "Improving my COMBO app.",
+    "feat.title": "Featured projects",
+    "feat.intro": "Click a project to see the details.",
+    "other.title": "Other projects",
+    "other.intro": "Smaller projects, open-source web effects, or projects still in progress.",
+    "filter.all": "All",
+    "filter.perso": "Personal",
+    "filter.web": "Web",
+    "filter.hardware": "Hardware",
+    "about.title": "About me",
+    "about.intro": "Beyond code.",
+    "about.p1": "Code is only part of who I am. I've been doing <strong>sports</strong> since I was a kid, from judo to football. Today I play in R2 (regional league) and I also do weight training.",
+    "about.p2": "I love to <strong>create</strong>: a clothing brand, a manga, apps. And I like to <strong>get involved</strong> for others: on the student council in high school, and as a class representative today.",
+    "about.badges": "<span>🥋 Judo</span><span>⚽ Football R2</span><span>🏋️ Gym</span><span>👕 Jeryo</span><span>✏️ Manga</span><span>🌍 MUN</span>",
+    "about.1": '<span class="yr">Today</span><span class="cat engage">Involvement</span><p>Representative of 1st-year students on the department council</p>',
+    "about.2": '<span class="yr">2025</span><span class="cat crea">Creation</span><p>Launched my clothing brand, <strong>Jeryo</strong></p>',
+    "about.3": '<span class="yr">2024</span><span class="cat crea">Creation</span><p>Created a manga: the first chapter is being illustrated</p>',
+    "about.4": '<span class="yr">2023 → now</span><span class="cat sport">Sport</span><p>Weight training for 3 years</p>',
+    "about.5": '<span class="yr">2022 – 2023</span><span class="cat engage">Involvement</span><p>Elected to the high school student council (CVL) in 10th grade</p>',
+    "about.6": '<span class="yr">2021 – 2022</span><span class="cat engage">Involvement</span><p>MUN (Model United Nations) in Dubai, in 9th grade</p>',
+    "about.7": '<span class="yr">2021 – 2022</span><span class="cat engage">Teaching</span><p>Ran introductory Scratch coding workshops for middle school students</p>',
+    "about.8": '<span class="yr">2016 → now</span><span class="cat sport">Sport</span><p>Football in R2 (Regional 2)</p>',
+    "about.9": '<span class="yr">2014</span><span class="cat sport">Sport</span><p>Won a national judo tournament in Gabon</p>',
+    "skills.title": "Skills",
+    "tl.title": "Background",
+    "tl.1": '<span class="when">2026 →</span>\n          <h3>BUT in Computer Science · Bordeaux</h3>\n          <p>Studying software development, systems and networks.</p>',
+    "tl.2": '<span class="when">2026</span>\n          <h3>Personal projects</h3>\n          <p>JARVIS AI assistant, COMBO app, volumetric display pipeline, Instagram clone, connected plant sensor, self-driving car, home server, and two open-source web effects: Essaim lumineux and Chantier en direct.</p>',
+    "contact.p": "An internship, a project or just a question? Message me on LinkedIn.",
+  },
+  skillGroups: { "Langages": "Languages", "Outils": "Tools", "Systèmes": "Systems", "Domaines": "Fields" },
+  tags: {
+    "Sécurité web": "Web security", "Base de données": "Database", "Authentification": "Authentication",
+    "Électronique": "Electronics", "Capteurs": "Sensors", "Impression 3D": "3D printing", "Réseau": "Networking",
+    "Réseau / VPN": "Networking / VPN", "IA / LLM": "AI / LLM", "Robotique": "Robotics",
+    "Auto-hébergement": "Self-hosting", "Web full-stack": "Full-stack web",
+  },
+  projects: {
+    jarvis: {
+      kicker: "AI voice assistant · Windows + iPhone",
+      short: "My personal voice-controlled assistant: morning briefing, calendar, reminders, email, a holographic interface, and usable from my iPhone.",
+      highlights: [
+        "Morning briefing: today's classes, reminders, upcoming exams, unread email, science/tech and football news",
+        "Calendar: reads my timetable and adds / moves / deletes events in the iPhone Calendar (iCloud)",
+        "Access from my iPhone via Tailscale + iOS Shortcuts, protected by a secret code",
+        "AI cascade (Groq → Mistral → Gemini → local Ollama), ElevenLabs voice, gesture control",
+      ],
+      details: {
+        context: "Personal project: a real desktop assistant, voice-activated (\"Jarvis\" or Ctrl+Shift+J), with a futuristic web interface served locally, that organizes my student day and that I can also use from my phone.",
+        features: [
+          "Morning briefing read aloud and saved to my Obsidian vault",
+          "HyperPlanning timetable (.ics): \"my classes on Monday\", \"my next exam\" with the subject name",
+          "iPhone Calendar via iCloud (CalDAV): add, move and delete events by voice",
+          "Reminders written to Obsidian (\"add a reminder on Monday to…\") and included in the briefing",
+          "Reads university email (IMAP) without marking it as read",
+          "Private server for the iPhone (Tailscale + token) and two iOS Shortcuts: talk to JARVIS and a wake-up briefing",
+          "Gesture control (MediaPipe GestureRecognizer), holographic Leaflet map, auto-start with Windows",
+          "Self-modification engine: generates code, shows a preview, makes a backup, then restarts",
+        ],
+        challenges: [
+          "Groq model retired by the provider → migrated to a new model, configurable in the config",
+          "MediaPipe removed its old API → rewrote the gestures with the new Tasks API",
+          "Map tiles became paid → switched to free tiles with no API key",
+          "Voice commands cut off too early → tuned the end-of-sentence detection",
+          "Open-source release: secrets isolated in a config file ignored by Git",
+        ],
+      },
+    },
+    combo: {
+      kicker: "My app · Fashion & AI",
+      short: "My fashion app: virtual wardrobe, AI-assisted outfit creation, social feed and clothing marketplace.",
+      highlights: [
+        "Virtual wardrobe: photograph your clothes and sort them by category",
+        "Outfit creation with a style AI, calendar of outfits worn",
+        "Social feed and marketplace to resell clothes",
+        "Careful security: rate limits, photo moderation, AI quotas",
+      ],
+      details: {
+        context: "Full-stack web app: virtual wardrobe, personalized outfits, activity feed and clothing resale.",
+        features: [
+          "Node.js + Prisma backend, 73 automated tests",
+          "Security: rate limiting, restricted CORS, file validation, XSS escaping, AI quotas",
+          "Automatic photo moderation, password reset",
+          "Favorites, calendar of outfits worn, wardrobe statistics",
+        ],
+      },
+    },
+    volumetric: {
+      kicker: "3D modeling software → hologram",
+      short: "A complete software pipeline that turns a 3D model into slices of light for a volumetric display with spinning LEDs (hologram effect).",
+      highlights: [
+        "Python voxelizer: STL/OBJ → angular slices (geometry hand-written with numpy)",
+        "Blender add-on to export a scene directly to the .vxd format",
+        "ESP32 firmware: rotation sync with a Hall-effect sensor + APA102 LEDs",
+        "3D viewer to check the result without the hardware",
+      ],
+      details: {
+        context: "Personal research project: a \"floating\" 3D display using persistence of vision. An LED bar spins very fast and draws the object in volume.",
+        features: [
+          "Documented .vxd binary format (slices × rows × columns)",
+          "Adjustable settings: slices per turn, resolution, radius, height, surface thickness",
+          "Web server on the ESP32 to send a new model wirelessly",
+          "Validated on a cube and a torus (1,024 triangles processed in ~1.5 s)",
+        ],
+        challenges: [
+          "Height normalization bug that cut the geometry → found with the viewer and fixed",
+          "Firmware too big for the flash → changed the partition scheme (Minimal SPIFFS)",
+          "LED choice: APA102 rather than WS2812B, which are too slow for the required refresh rate",
+        ],
+      },
+    },
+    insta: {
+      title: "Instagram clone",
+      kicker: "Social network · Web",
+      short: "A complete social network modeled on Instagram: photo posts, news feed, likes, comments and follows.",
+      highlights: [
+        "User accounts with sign-up, login and profile page",
+        "Photo posts with captions, shown in a news feed",
+        "Likes, comments and a followers / following system",
+        "Responsive interface that follows Instagram's design",
+      ],
+      details: {
+        context: "Personal project: rebuild Instagram from A to Z to understand how a real social network works.",
+        features: [
+          "News feed with posts from followed accounts",
+          "Photo grid on every profile, follower and following counters",
+          "Likes and comments under each post",
+          "Image upload and storage",
+        ],
+      },
+    },
+    plantes: {
+      title: "Plant-care robot",
+      kicker: "Connected device · ESP32-C3",
+      short: "A robot that monitors a plant around the clock, shows its stats on a small screen and sends an alert to my phone in an emergency.",
+      highlights: [
+        "Brain: an ESP32-C3 board, with built-in Wi-Fi for alerts",
+        "Capacitive soil moisture sensor (v1.2): no electrode rusting in the soil",
+        "BH1750 light sensor (in lux) and analog pH module with a BNC probe",
+        "OLED screen for live stats, custom 3D-printed case",
+      ],
+      details: {
+        context: "Personal connected-device project: monitor a plant continuously and get notified on my phone as soon as it needs help.",
+        features: [
+          "Regular readings from the three sensors: soil moisture, pH, light in lux",
+          "Live values on the OLED screen",
+          "Alert thresholds: soil too dry, abnormal pH, not enough light",
+          "Phone notification through the ESP32-C3's Wi-Fi in an emergency",
+          "Custom 3D-printed case to protect the electronics",
+        ],
+      },
+    },
+    robot: {
+      title: "Self-driving car",
+      kicker: "Robotics · Self-driving car",
+      short: "A small car that drives itself: it detects obstacles with ultrasound and picks the clearest path.",
+      highlights: [
+        "2-wheel-drive car controlled by an Arduino Uno, driving on its own",
+        "HC-SR04 ultrasonic sensor on an SG90 servo that looks left and right",
+        "L298N H-bridge to control motor speed and direction",
+        "Assembly, soldering, wiring, code and tuning all done myself",
+      ],
+      details: {
+        context: "Personal project built from a kit, from soldering the motors to the final code.",
+        features: [
+          "Arduino Uno, L298N H-bridge, HC-SR04 sensor on an SG90 servo",
+          "Left / right scan to choose the clearest path",
+          "Wiring, soldering and calibration done by hand",
+        ],
+        challenges: [
+          "Separate power for the motors and the Arduino to avoid resets",
+          "Tuning detection distances and turning times",
+        ],
+      },
+    },
+    homelab: {
+      title: "Home server",
+      kicker: "Server · Self-hosting",
+      short: "Turning a laptop into a self-hosted server: photos, cloud, streaming, VPN, home automation and local AI.",
+      highlights: [
+        "Recycled laptop running Ubuntu Server, services in Docker containers",
+        "Photos, cloud, video and music streaming hosted at home",
+        "Secure remote access via VPN and network-wide ad blocking",
+        "Home automation (electric shutters) and local AI with Ollama",
+      ],
+      details: {
+        context: "Personal self-hosting project on an Acer Nitro 5.",
+        features: [
+          "Planned Docker stack on Ubuntu Server: Immich, Jellyfin, Home Assistant, AdGuard…",
+          "Secure remote access via VPN (Tailscale)",
+          "Versioned backups following the 3-2-1 rule",
+          "Local LLMs with Ollama",
+        ],
+      },
+    },
+    curio: {
+      short: "A roulette of unusual topics styled like a library card catalog: draw a topic, then you have 60 seconds to present it.",
+      details: {
+        context: "Single-file web mini-project.",
+        features: [
+          "Slot-machine reel animation",
+          "45 topics, Fisher-Yates shuffle",
+          "60-second circular timer, \"reduced motion\" accessibility",
+        ],
+      },
+    },
+    essaim: {
+      short: "Thousands of glowing needles that follow the cursor across a night sky, with a clock and customizable colors. Open source.",
+      details: {
+        context: "Open-source web project inspired by a video: a living wallpaper where a swarm of particles follows the mouse (or your finger on a phone). Published on GitHub under the MIT license so others can reuse it.",
+        features: [
+          "Up to 12,000 needles drawn with WebGL, without any library",
+          "When the mouse moves, the swarm chases it in a wave; when it stops, it forms a spinning disc",
+          "Click: the swarm bursts then re-forms; double-click: full screen",
+          "\"Colors\" panel: 6 themes, 4 custom colors, adjustable needle count and disc size, settings remembered",
+          "Clock and date at the bottom of the screen",
+        ],
+        challenges: [
+          "The first 2D canvas version wasn't smooth enough → moved to WebGL: each needle becomes 2 triangles sent in a single call",
+          "Jerky animation → the followed point glides toward the mouse and the physics runs in small sub-steps",
+          "Colors washing out to white → tuned the additive blending and the transparency of the tails",
+        ],
+      },
+    },
+    chantier: {
+      short: "Colored cursors build a web page in front of you, like a team in a multiplayer design file. Reusable engine, open source.",
+      details: {
+        context: "Open-source web project: a small JavaScript engine you can add to any site. Named cursors select each element, type the text letter by letter and reveal the blocks while the page scrolls down on its own.",
+        features: [
+          "16 cursors (10 on mobile) with selection boxes, size labels and trails",
+          "Text typed letter by letter without shifting the layout",
+          "Auto-scroll that follows the build, stopped as soon as the visitor scrolls",
+          "Control bar: 1× / 2× / 4× speed, build everything at once, replay",
+          "Reusable: just add the \"b\" and \"t\" classes to the elements of your page",
+          "Respects the system's \"Reduce motion\" setting",
+        ],
+        challenges: [
+          "Nothing animated when \"Reduce motion\" was on → added a button to start the animation on demand",
+          "Emptying and retyping a text made the page jump → text split in two parts, the rest kept transparent",
+          "Code separated from the content to turn it into a tool others can use",
+        ],
+      },
+    },
+  },
+};
+
+const tg = (t) => (LANG === "en" ? EN.tags[t] || t : t);
+// Renvoie le projet dans la langue courante (le français sert de base)
+function loc(p) {
+  const e = LANG === "en" ? EN.projects[p.id] : null;
+  if (!e) return p;
+  return Object.assign({}, p, e, { details: Object.assign({}, p.details, e.details || {}) });
+}
+// Textes fixes de la page : le français est lu dans le HTML, l'anglais dans EN.static
+function applyStatic() {
+  document.querySelectorAll("[data-i18n]").forEach((el) => {
+    if (el.dataset.fr === undefined) el.dataset.fr = el.innerHTML;
+    const en = EN.static[el.dataset.i18n];
+    el.innerHTML = LANG === "en" && en ? en : el.dataset.fr;
+  });
+  document.documentElement.lang = LANG;
+  const meta = document.querySelector('meta[name="description"]');
+  if (meta) { if (meta.dataset.fr === undefined) meta.dataset.fr = meta.content; meta.content = LANG === "en" ? EN.meta : meta.dataset.fr; }
+  const btn = document.getElementById("lang-toggle");
+  btn.textContent = LANG === "en" ? "FR" : "EN";
+  btn.setAttribute("aria-label", LANG === "en" ? "Passer en français" : "Switch to English");
+}
+function setupLang() {
+  document.getElementById("lang-toggle").addEventListener("click", () => {
+    LANG = LANG === "en" ? "fr" : "en";
+    try { localStorage.setItem("lang", LANG); } catch (e) {}
+    applyStatic();
+    setTheme(document.documentElement.getAttribute("data-theme") || "light");
+    renderFeatured();
+    renderGrid();
+    renderSkills();
+    const active = document.querySelector(".chip.active");
+    applyFilter(active ? active.dataset.filter : "all");
+    document.querySelectorAll(".reveal").forEach((el) => el.classList.add("visible"));
+    startVisuals();
+  });
+}
 
 /* =========================================================
    THÈME JOUR / NUIT
@@ -634,7 +1007,7 @@ function setTheme(name) {
   try { localStorage.setItem("theme", name); } catch (e) {}
   const btn = document.getElementById("theme-toggle");
   btn.textContent = name === "dark" ? "☀️" : "🌙";
-  btn.setAttribute("aria-label", name === "dark" ? "Passer en mode jour" : "Passer en mode nuit");
+  btn.setAttribute("aria-label", name === "dark" ? tr("Passer en mode jour", "Switch to light mode") : tr("Passer en mode nuit", "Switch to dark mode"));
 }
 function setupTheme() {
   setTheme(document.documentElement.getAttribute("data-theme") || "light");
@@ -648,8 +1021,8 @@ function setupTheme() {
    ========================================================= */
 const $ = (s, el = document) => el.querySelector(s);
 const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
-const tagsHTML = (tags) => `<div class="tags">${tags.map((t) => `<span>${esc(t)}</span>`).join("")}</div>`;
-const statusHTML = (s) => `<span class="status ${s}">${s === "done" ? "terminé" : "en cours"}</span>`;
+const tagsHTML = (tags) => `<div class="tags">${tags.map((t) => `<span>${esc(tg(t))}</span>`).join("")}</div>`;
+const statusHTML = (s) => `<span class="status ${s}">${s === "done" ? tr("terminé", "done") : tr("en cours", "in progress")}</span>`;
 
 function applyConfig() {
   document.querySelectorAll('[data-field="name"]').forEach((el) => (el.textContent = CONFIG.name));
@@ -664,7 +1037,7 @@ function applyConfig() {
 }
 
 function renderFeatured() {
-  $("#featured").innerHTML = PROJECTS.filter((p) => p.featured)
+  $("#featured").innerHTML = PROJECTS.filter((p) => p.featured).map(loc)
     .map((p) => `
       <article class="feat reveal" data-id="${p.id}" tabindex="0">
         <div>
@@ -673,7 +1046,7 @@ function renderFeatured() {
           <p>${esc(p.short)}</p>
           <ul>${p.highlights.map((h) => `<li>${esc(h)}</li>`).join("")}</ul>
           ${tagsHTML(p.tags)}
-          <p class="feat-actions"><span class="more">Voir le détail →</span>${p.repo ? `<a class="repo-link" href="${esc(p.repo)}" target="_blank" rel="noopener">Code sur GitHub ↗</a>` : ""}</p>
+          <p class="feat-actions"><span class="more">${tr("Voir le détail →", "See details →")}</span>${p.demo ? `<a class="repo-link" href="${esc(p.demo)}" target="_blank" rel="noopener">${tr("Voir la démo ↗", "Live demo ↗")}</a>` : ""}${p.repo ? `<a class="repo-link" href="${esc(p.repo)}" target="_blank" rel="noopener">${tr("Code sur GitHub ↗", "Code on GitHub ↗")}</a>` : ""}</p>
         </div>
         <div class="feat-visual"><canvas data-visual="${p.visual}"></canvas></div>
       </article>`)
@@ -681,21 +1054,21 @@ function renderFeatured() {
 }
 
 function renderGrid() {
-  $("#projects-grid").innerHTML = PROJECTS.filter((p) => !p.featured)
+  $("#projects-grid").innerHTML = PROJECTS.filter((p) => !p.featured).map(loc)
     .map((p) => `
       <article class="card reveal" data-id="${p.id}" data-cats="${p.cats.join(" ")}" tabindex="0">
         <div class="card-head"><span class="card-icon">${p.icon}</span>${statusHTML(p.status)}</div>
         <h3>${esc(p.title)}</h3>
         <p>${esc(p.short)}</p>
         ${tagsHTML(p.tags)}
-        ${p.repo ? `<p class="feat-actions"><a class="repo-link" href="${esc(p.repo)}" target="_blank" rel="noopener">Code sur GitHub ↗</a></p>` : ""}
+        ${p.repo || p.demo ? `<p class="feat-actions">${p.demo ? `<a class="repo-link" href="${esc(p.demo)}" target="_blank" rel="noopener">${tr("Voir la démo ↗", "Live demo ↗")}</a>` : ""}${p.repo ? `<a class="repo-link" href="${esc(p.repo)}" target="_blank" rel="noopener">${tr("Code sur GitHub ↗", "Code on GitHub ↗")}</a>` : ""}</p>` : ""}
       </article>`)
     .join("");
 }
 
 function renderSkills() {
   $("#skills").innerHTML = Object.entries(SKILLS)
-    .map(([group, list]) => `<div class="skill-group reveal"><h3>${esc(group)}</h3>${tagsHTML(list)}</div>`)
+    .map(([group, list]) => `<div class="skill-group reveal"><h3>${esc(LANG === "en" ? EN.skillGroups[group] || group : group)}</h3>${tagsHTML(list)}</div>`)
     .join("");
 }
 
@@ -704,16 +1077,19 @@ function setupFilters() {
     const btn = e.target.closest(".chip");
     if (!btn) return;
     document.querySelectorAll(".chip").forEach((c) => c.classList.toggle("active", c === btn));
-    const f = btn.dataset.filter;
-    document.querySelectorAll("#projects-grid .card").forEach((card) => {
-      card.classList.toggle("hide", f !== "all" && !card.dataset.cats.split(" ").includes(f));
-    });
+    applyFilter(btn.dataset.filter);
+  });
+}
+function applyFilter(f) {
+  document.querySelectorAll("#projects-grid .card").forEach((card) => {
+    card.classList.toggle("hide", f !== "all" && !card.dataset.cats.split(" ").includes(f));
   });
 }
 
 function openModal(id) {
-  const p = PROJECTS.find((x) => x.id === id);
-  if (!p) return;
+  const found = PROJECTS.find((x) => x.id === id);
+  if (!found) return;
+  const p = loc(found);
   const d = p.details || {};
   const list = (arr) => (arr && arr.length ? `<ul>${arr.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>` : "");
   $("#modal-content").innerHTML = `
@@ -721,10 +1097,10 @@ function openModal(id) {
     <h3>${esc(p.title)}</h3>
     <p>${esc(d.context || p.short)}</p>
     ${p.images && p.images.length ? `<div class="gallery">${p.images.map((im) => `<a href="${esc(im.src)}" target="_blank" rel="noopener"><img src="${esc(im.src)}" alt="${esc(im.alt || p.title)}" loading="lazy" onerror="this.parentElement.remove()"></a>`).join("")}</div>` : ""}
-    ${d.features ? `<h4>Fonctionnalités</h4>${list(d.features)}` : ""}
-    ${d.challenges ? `<h4>Problèmes résolus</h4>${list(d.challenges)}` : ""}
-    <h4>Technos</h4>${tagsHTML(p.tags)}
-    <div class="links">${p.repo ? `<a class="btn btn-primary" href="${esc(p.repo)}" target="_blank" rel="noopener">Code sur GitHub</a>` : `<span style="color:var(--muted);font-size:.9rem">Code bientôt public.</span>`}</div>`;
+    ${d.features ? `<h4>${tr("Fonctionnalités", "Features")}</h4>${list(d.features)}` : ""}
+    ${d.challenges ? `<h4>${tr("Problèmes résolus", "Problems solved")}</h4>${list(d.challenges)}` : ""}
+    <h4>${tr("Technos", "Tech")}</h4>${tagsHTML(p.tags)}
+    <div class="links">${p.demo ? `<a class="btn btn-primary" href="${esc(p.demo)}" target="_blank" rel="noopener">${tr("Voir la démo", "Live demo")}</a>` : ""}${p.repo ? `<a class="btn${p.demo ? "" : " btn-primary"}" href="${esc(p.repo)}" target="_blank" rel="noopener">${tr("Code sur GitHub", "Code on GitHub")}</a>` : `<span style="color:var(--muted);font-size:.9rem">${tr("Code bientôt public.", "Code coming soon.")}</span>`}</div>`;
   $("#modal").showModal();
 }
 
@@ -817,9 +1193,9 @@ function voiceVisual(c) {
     ctx.fillStyle = `rgba(${T.acc},.85)`;
     ctx.font = "600 13px Plus Jakarta Sans, sans-serif";
     ctx.textAlign = "center";
-    ctx.fillText("« Jarvis, à l'écoute »", cx, h - 18);
+    ctx.fillText(tr("« Jarvis, à l'écoute »", "“Jarvis, listening”"), cx, h - 18);
     t += 0.016;
-    if (!reduceMotion) requestAnimationFrame(frame);
+    if (!reduceMotion && c.isConnected) requestAnimationFrame(frame);
   };
   frame();
 }
@@ -862,7 +1238,7 @@ function torusVisual(c) {
     ctx.textAlign = "center";
     ctx.fillText(`torus.stl → ${pts.length} voxels`, cx, h - 18);
     t += 0.012;
-    if (!reduceMotion) requestAnimationFrame(frame);
+    if (!reduceMotion && c.isConnected) requestAnimationFrame(frame);
   };
   frame();
 }
@@ -896,9 +1272,9 @@ function radarVisual(c) {
     }
     ctx.fillStyle = `rgb(${T.acc})`; ctx.fillRect(cx - 14, cy - 8, 28, 16);
     ctx.fillStyle = `rgba(${T.acc},.85)`; ctx.font = "600 13px Plus Jakarta Sans, sans-serif"; ctx.textAlign = "center";
-    ctx.fillText(`HC-SR04 · ${Math.round((sweep * 180) / Math.PI)}° · obstacle détecté`, cx, h - 12);
+    ctx.fillText(`HC-SR04 · ${Math.round((sweep * 180) / Math.PI)}° · ${tr("obstacle détecté", "obstacle detected")}`, cx, h - 12);
     t += 0.02;
-    if (!reduceMotion) requestAnimationFrame(frame);
+    if (!reduceMotion && c.isConnected) requestAnimationFrame(frame);
   };
   frame();
 }
@@ -908,11 +1284,13 @@ function networkVisual(c) {
   let t = 0, ctx, w, h;
   const resize = () => ({ ctx, w, h } = fitCanvas(c));
   resize(); window.addEventListener("resize", resize);
-  const nodes = ["Photos", "Cloud", "Films", "Musique", "VPN", "Domotique", "IA", "Backup"];
+  const nodesFr = ["Photos", "Cloud", "Films", "Musique", "VPN", "Domotique", "IA", "Backup"];
+  const nodesEn = ["Photos", "Cloud", "Movies", "Music", "VPN", "Smart home", "AI", "Backup"];
   const frame = () => {
     ctx.clearRect(0, 0, w, h);
     const cx = w / 2, cy = h / 2 - 8, R = Math.min(w, h) * 0.36;
     ctx.font = "600 11px Plus Jakarta Sans, sans-serif"; ctx.textAlign = "center";
+    const nodes = LANG === "en" ? nodesEn : nodesFr;
     nodes.forEach((name, i) => {
       const a = (i / nodes.length) * Math.PI * 2 - Math.PI / 2;
       const x = cx + Math.cos(a) * R, y = cy + Math.sin(a) * R;
@@ -935,7 +1313,7 @@ function networkVisual(c) {
     ctx.fillStyle = `rgba(${T.acc},.85)`; ctx.font = "600 13px Plus Jakarta Sans, sans-serif";
     ctx.fillText("homelab · docker ps", cx, h - 12);
     t += 0.016;
-    if (!reduceMotion) requestAnimationFrame(frame);
+    if (!reduceMotion && c.isConnected) requestAnimationFrame(frame);
   };
   frame();
 }
@@ -973,10 +1351,10 @@ function feedVisual(c) {
     }
     ctx.fillStyle = `rgb(${T.paper})`; ctx.fillRect(px, py, pw, 28);
     ctx.fillStyle = `rgb(${T.ink})`; ctx.font = "800 14px Plus Jakarta Sans, sans-serif"; ctx.textAlign = "left";
-    ctx.fillText("Mon réseau", px + 12, py + 19);
+    ctx.fillText(tr("Mon réseau", "My network"), px + 12, py + 19);
     ctx.restore();
     t += 0.016;
-    if (!reduceMotion) requestAnimationFrame(frame);
+    if (!reduceMotion && c.isConnected) requestAnimationFrame(frame);
   };
   frame();
 }
@@ -1010,7 +1388,7 @@ function plantVisual(c) {
     ctx.fillStyle = "#14161a"; ctx.strokeStyle = `rgb(${T.ink})`; ctx.lineWidth = 2;
     ctx.beginPath(); ctx.roundRect(sx, sy, sw, sh, 8); ctx.fill(); ctx.stroke();
     ctx.font = "600 12px Plus Jakarta Sans, sans-serif"; ctx.textAlign = "left";
-    const rows = [["Humidité", `${humid.toFixed(0)} %`, humid / 100, alert], ["pH", ph.toFixed(1), (ph - 4) / 5, false], ["Lumière", `${(lux * 120).toFixed(0)} lx`, lux / 100, false]];
+    const rows = [[tr("Humidité", "Moisture"), `${humid.toFixed(0)} %`, humid / 100, alert], ["pH", ph.toFixed(1), (ph - 4) / 5, false], [tr("Lumière", "Light"), `${(lux * 120).toFixed(0)} lx`, lux / 100, false]];
     rows.forEach(([k, v, p, bad], i) => {
       const y = sy + 26 + i * 32;
       ctx.fillStyle = "rgba(240,240,240,.8)"; ctx.fillText(k, sx + 10, y);
@@ -1024,13 +1402,13 @@ function plantVisual(c) {
       ctx.fillStyle = "rgba(255,77,109,.12)"; ctx.strokeStyle = "#ff4d6d";
       ctx.beginPath(); ctx.roundRect(sx, ny, sw, 44, 10); ctx.fill(); ctx.stroke();
       ctx.fillStyle = "#ff4d6d"; ctx.font = "600 11px Plus Jakarta Sans, sans-serif";
-      ctx.fillText("📱 URGENCE", sx + 10, ny + 18);
-      ctx.fillStyle = `rgba(${T.ink},.85)`; ctx.fillText("Terre trop sèche !", sx + 10, ny + 34);
+      ctx.fillText(tr("📱 URGENCE", "📱 URGENT"), sx + 10, ny + 18);
+      ctx.fillStyle = `rgba(${T.ink},.85)`; ctx.fillText(tr("Terre trop sèche !", "Soil too dry!"), sx + 10, ny + 34);
     }
     ctx.fillStyle = `rgba(${T.acc},.85)`; ctx.font = "600 13px Plus Jakarta Sans, sans-serif"; ctx.textAlign = "center";
-    ctx.fillText(alert ? "ESP32-C3 → alerte Wi-Fi envoyée" : "ESP32-C3 · OLED · BH1750", w / 2, h - 12);
+    ctx.fillText(alert ? tr("ESP32-C3 → alerte Wi-Fi envoyée", "ESP32-C3 → Wi-Fi alert sent") : "ESP32-C3 · OLED · BH1750", w / 2, h - 12);
     t += 0.02;
-    if (!reduceMotion) requestAnimationFrame(frame);
+    if (!reduceMotion && c.isConnected) requestAnimationFrame(frame);
   };
   frame();
 }
@@ -1040,12 +1418,14 @@ function outfitVisual(c) {
   let t = 0, ctx, w, h;
   const resize = () => ({ ctx, w, h } = fitCanvas(c));
   resize(); window.addEventListener("resize", resize);
-  const slots = ["Veste", "Haut", "Bas", "Chaussures", "Accessoire"];
+  const slotsFr = ["Veste", "Haut", "Bas", "Chaussures", "Accessoire"];
+  const slotsEn = ["Jacket", "Top", "Bottom", "Shoes", "Accessory"];
   const palette = [[210, 60], [10, 70], [45, 80], [160, 50], [280, 55], [330, 65], [190, 75]];
   const frame = () => {
     ctx.clearRect(0, 0, w, h);
     const cols = 2, cw = Math.min(120, w * 0.3), chh = (h - 80) / 3;
     const ox = w / 2 - cw - 8, oy = 24;
+    const slots = LANG === "en" ? slotsEn : slotsFr;
     slots.forEach((name, i) => {
       const x = ox + (i % cols) * (cw + 16), y = oy + Math.floor(i / cols) * (chh + 8);
       const step = Math.floor(t * 0.8 + i * 0.6);
@@ -1059,9 +1439,9 @@ function outfitVisual(c) {
       ctx.fillText(name, x + cw / 2, y + chh - 10);
     });
     ctx.fillStyle = `rgba(${T.acc},.85)`; ctx.font = "600 13px Plus Jakarta Sans, sans-serif"; ctx.textAlign = "center";
-    ctx.fillText("IA de style · nouvelle tenue", w / 2, h - 12);
+    ctx.fillText(tr("IA de style · nouvelle tenue", "Style AI · new outfit"), w / 2, h - 12);
     t += 0.016;
-    if (!reduceMotion) requestAnimationFrame(frame);
+    if (!reduceMotion && c.isConnected) requestAnimationFrame(frame);
   };
   frame();
 }
@@ -1079,7 +1459,9 @@ function startVisuals() {
 }
 
 /* ========================================================= */
+applyStatic();
 setupTheme();
+setupLang();
 applyConfig();
 renderFeatured();
 renderGrid();
